@@ -240,114 +240,128 @@
       </div>
     </section>
 
-    <!-- SCROLL STORY: 5 Beats with GSAP Scrub -->
-    <section class="story-section" id="story" aria-label="Scientific Narrative: 5 Flight Beats">
-      <div class="story-progress-indicator" aria-hidden="true">
-        <div class="story-progress-bar" id="story-progress-bar"></div>
+    <!-- SCROLL STORY: 4 Floating Liquid Glass Cards over Glowing Planetary Horizon Arc -->
+    <section class="story-section protocol-story-section" id="story" aria-label="Scientific Narrative: Artemis Protocol & Mission Physics">
+      <!-- Background Giant Typography -->
+      <div class="protocol-bg-text" aria-hidden="true">P R O T O C O L</div>
+
+      <!-- Glowing Planetary Horizon Arc -->
+      <div class="planetary-horizon-wrap" aria-hidden="true">
+        <div class="planetary-horizon-arc">
+          <div class="planetary-horizon-glow"></div>
+        </div>
       </div>
 
-      <div class="story-container">
-        <!-- Beat 1 -->
-        <article class="story-beat glass-card" data-beat="1">
-          <div class="beat-header-row">
-            <span class="beat-index mono">PHASE 01 // ORBITAL RISK</span>
-            <span class="hud-tag">MISSION SAFETY</span>
+      <div class="story-container-wide">
+        <!-- Section Header -->
+        <div class="protocol-header">
+          <div class="protocol-badge">
+            <span class="protocol-dot"></span>
+            <span>FLIGHT ARCHITECTURE // ARTE-MIS MISSION PROTOCOL</span>
           </div>
-          <h2 class="beat-heading">A fire alarm 80,000 miles from home</h2>
-          <blockquote class="beat-quote">
-            &ldquo;Out there, between the Earth and the Moon, there is no back door. If something catches fire, you cannot step outside.&rdquo;
-            <cite>&mdash; Artemis II Mission Commander (Paraphrase)</cite>
-          </blockquote>
-          <p class="beat-text">
-            On Earth, evacuation takes seconds. In cislunar transit and on the lunar surface, fire is an existential crew threat. Extinguishing it, scrubbing toxic hydrogen cyanide and carbon monoxide, and preserving the habitat atmosphere requires uncompromising materials screening before launch.
+          <h2 class="protocol-title">
+            The Physics Behind the <span class="text-gradient">Critical Gap</span>
+          </h2>
+          <p class="protocol-subtitle">
+            Why terrestrial fire standards fail 80,000 miles out—and where NASA empirical ground-truth ends.
           </p>
-        </article>
+        </div>
 
-        <!-- Beat 2 -->
-        <article class="story-beat glass-card" data-beat="2">
-          <div class="beat-header-row">
-            <span class="beat-index mono">PHASE 02 // COMBUSTION PHYSICS</span>
-            <span class="hud-tag">FLUID MECHANICS</span>
-          </div>
-          <h2 class="beat-heading">Flames behave differently without gravity</h2>
-          <div class="flame-comparison-grid">
-            <div class="flame-card earth-flame">
-              <span class="badge earth-badge">Earth (1.00 g)</span>
-              <h3>Buoyancy-Driven Plume</h3>
-              <p>Hot, light exhaust gases rise naturally. This drafts fresh ambient oxygen into the flame base, elongating the flame into an upward, flickering, hot orange teardrop.</p>
+        <!-- 4 Floating Liquid Glass Cards Across Glowing Planetary Horizon -->
+        <div class="story-cards-grid">
+          <!-- CARD 1: Orbital Risk -->
+          <article class="story-card glass-card story-beat" data-beat="1">
+            <div class="card-glow-bottom" aria-hidden="true"></div>
+            <div class="card-header-pill">
+              <span class="pill-badge">Mission Safety</span>
+              <span class="pill-id mono">01 // CISLUNAR</span>
             </div>
-            <div class="flame-card micro-flame">
-              <span class="badge zero-badge">Microgravity (0.00 g)</span>
-              <h3>Diffusion-Controlled Sphere</h3>
-              <p>No buoyancy means hot air does not rise. Oxygen reaches the reaction zone solely via molecular diffusion, forming a serene, low-temperature, spherical blue flame that can burn quietly and evade optical sensors.</p>
-            </div>
-          </div>
-        </article>
+            <h3 class="card-title">A fire alarm 80,000 miles out</h3>
+            <blockquote class="card-quote">
+              &ldquo;Out there, between the Earth and the Moon, there is no back door. If something catches fire, you cannot step outside.&rdquo;
+              <cite>&mdash; Artemis II Mission Evaluation Directive</cite>
+            </blockquote>
+            <p class="card-desc">
+              On Earth, evacuation takes seconds. In cislunar transit and on the lunar surface, fire is an existential crew threat. Extinguishing combustion and preserving cabin scrubbers demands proactive materials screening before launch.
+            </p>
+          </article>
 
-        <!-- Beat 3 -->
-        <article class="story-beat glass-card" data-beat="3">
-          <div class="beat-header-row">
-            <span class="beat-index mono">PHASE 03 // EXPLORATION ATMOSPHERE</span>
-            <span class="hud-tag">HABITAT SPEC</span>
-          </div>
-          <h2 class="beat-heading">Lunar habitats demand exploration atmospheres</h2>
-          <p class="beat-text">
-            To prevent decompression sickness (the bends) during frequent spacewalks, lunar surface habitats are planned to operate at <strong>30% to 34% oxygen</strong> with reduced atmospheric pressure of <strong>&le; 10.2 psi (70.3 kPa)</strong>, compared to Earth's 21% O₂ at 14.7 psi.
-          </p>
-          <div class="stats-row">
-            <div class="metric-card">
-              <span class="metric-val mono">30–34%</span>
-              <span class="metric-label">Habitat O₂ Concentration</span>
+          <!-- CARD 2: Flame Physics -->
+          <article class="story-card glass-card story-beat" data-beat="2">
+            <div class="card-glow-bottom" aria-hidden="true"></div>
+            <div class="card-header-pill">
+              <span class="pill-badge">Fluid Mechanics</span>
+              <span class="pill-id mono">02 // REGIMES</span>
             </div>
-            <div class="metric-card">
-              <span class="metric-val mono">&le; 10.2 psi</span>
-              <span class="metric-label">Total Habitat Pressure</span>
+            <h3 class="card-title">Gravity vs Diffusion</h3>
+            <div class="physics-contrast-list">
+              <div class="contrast-item">
+                <span class="contrast-tag tag-earth">1.00g Earth Flame</span>
+                <p>Buoyancy drafts fresh O₂ into the base, creating a flickering, elongated yellow-orange convective teardrop plume.</p>
+              </div>
+              <div class="contrast-item">
+                <span class="contrast-tag tag-micro">0.00g Microgravity</span>
+                <p>Zero buoyancy. Oxygen reaches fuel strictly by molecular diffusion, forming a soot-free, calm spherical blue dome.</p>
+              </div>
             </div>
-            <div class="metric-card">
-              <span class="metric-val mono">&lt; 20 min</span>
-              <span class="metric-label">EVA Pre-Breathe Time (vs 4h on ISS)</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Beat 4 -->
-        <article class="story-beat glass-card" data-beat="4">
-          <div class="beat-header-row">
-            <span class="beat-index mono">PHASE 04 // DATA VOID</span>
-            <span class="hud-tag alert-tag">CRITICAL GAP</span>
-          </div>
-          <h2 class="beat-heading">The Data Gap: Zero reduced-gravity investigations</h2>
-          <div class="gap-callout">
-            <div class="gap-stat mono">0</div>
-            <div class="gap-info">
-              <h3>NASA PSI "Reduced Gravity" Query Result</h3>
-              <p>
-                On <strong>13 Nov 2026</strong>, querying the NASA Physical Sciences Informatics (PSI) repository with the <em>Reduced Gravity</em> filter returned <strong>zero investigations</strong>.
-              </p>
-              <p class="gap-subtext">
-                Spaceflight combustion data is concentrated in orbital microgravity (ISS CIR/MDCA at ~10⁻⁴ to 10⁻⁶ g) or terrestrial 1g labs. The transition physics at lunar 0.16g and Martian 0.38g are critically unverified.
-              </p>
+          <!-- CARD 3: Lunar Atmosphere -->
+          <article class="story-card glass-card story-beat" data-beat="3">
+            <div class="card-glow-bottom" aria-hidden="true"></div>
+            <div class="card-header-pill">
+              <span class="pill-badge">Habitat Spec</span>
+              <span class="pill-id mono">03 // ATMOSPHERE</span>
             </div>
-          </div>
-        </article>
+            <h3 class="card-title">Exploration Atmosphere</h3>
+            <p class="card-desc-compact">
+              Lunar surface habitats operate at hypobaric pressure to enable frequent, rapid extravehicular activities (EVAs).
+            </p>
+            <div class="habitat-metrics-grid">
+              <div class="metric-pill">
+                <span class="metric-num mono">30–34%</span>
+                <span class="metric-sub">Oxygen Concentration</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-num mono">&le; 10.2 PSI</span>
+                <span class="metric-sub">Cabin Pressure (Hypobaric)</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-num mono">&lt; 20 min</span>
+                <span class="metric-sub">EVA Pre-Breathe (vs 4h ISS)</span>
+              </div>
+            </div>
+          </article>
 
-        <!-- Beat 5 -->
-        <article class="story-beat glass-card" data-beat="5">
-          <div class="beat-header-row">
-            <span class="beat-index mono">PHASE 05 // SYSTEMATIC SCREENING</span>
-            <span class="hud-tag ready-tag">TOOL READY</span>
-          </div>
-          <h2 class="beat-heading">Enter Ignis Atlas: Systematic Screening</h2>
-          <p class="beat-text">
-            Ignis Atlas cross-references published NASA microgravity combustion datasets (BASS, FLEX-2, ACME, SoFIE) with planned lunar habitat envelopes. It pinpoints tested boundaries, highlights borderline data, and makes data gaps impossible to ignore.
-          </p>
-          <div class="beat-cta">
-            <a href="#views-container" class="btn-primary" id="btn-jump-atlas">
-              <span>Enter Atmospheric Star-Map</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-            </a>
-          </div>
-        </article>
+          <!-- CARD 4: The Critical Gap -->
+          <article class="story-card glass-card story-beat card-critical-gap" data-beat="4">
+            <div class="card-glow-bottom" aria-hidden="true"></div>
+            <div class="card-header-pill">
+              <span class="pill-badge pill-gap">Data Void</span>
+              <span class="pill-id mono">04 // VERIFICATION</span>
+            </div>
+            <h3 class="card-title">Zero 0.16g PSI Data</h3>
+            <div class="critical-gap-hero">
+              <div class="big-gap-stat mono">0</div>
+              <div class="gap-label-wrap">
+                <span class="gap-stat-title">NASA PSI Flight Records</span>
+                <span class="gap-stat-sub">in Lunar Partial Gravity (0.16g)</span>
+              </div>
+            </div>
+            <p class="card-desc">
+              NASA flight combustion data ends at zero-g. Flammability boundary under lunar gravity is completely unmeasured in PSI. Flagged as primary benchmark for LUCI / FM2 lunar payload.
+            </p>
+          </article>
+        </div>
+
+        <!-- Seamless Navigation CTA -->
+        <div class="protocol-cta-wrap">
+          <a href="#views-container" class="protocol-cta-btn" id="btn-jump-atlas" aria-label="Enter Atmospheric Star-Map">
+            <span class="cta-pulse-glow" aria-hidden="true"></span>
+            <span class="cta-text">ENTER ATMOSPHERIC STAR-MAP</span>
+            <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
