@@ -60,6 +60,36 @@ function initApp() {
   } catch (err) {
     console.error('[Ignis Atlas] Error initializing Atlas:', err);
   }
+
+  // 5. Initialize Cinematic Hero Parallax & Mouse Interactivity
+  initHeroParallax();
+}
+
+function initHeroParallax() {
+  const stage = document.getElementById('hero-parallax-stage');
+  const astronaut = document.getElementById('hero-astronaut-layer');
+  const pins = document.querySelectorAll('.hud-telemetry-pin');
+
+  if (!stage) return;
+
+  const handleMouseMove = (e) => {
+    const rect = stage.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const deltaX = (e.clientX - centerX) / (rect.width / 2);
+    const deltaY = (e.clientY - centerY) / (rect.height / 2);
+
+    if (astronaut) {
+      astronaut.style.transform = `translate(calc(-50% + ${deltaX * 18}px), calc(-50% + ${deltaY * 18}px))`;
+    }
+
+    pins.forEach((pin, idx) => {
+      const depth = (idx % 2 === 0) ? 12 : 8;
+      pin.style.transform = `translate(${deltaX * depth}px, ${deltaY * depth}px)`;
+    });
+  };
+
+  window.addEventListener('mousemove', handleMouseMove, { passive: true });
 }
 
 // Ensure execution regardless of script execution timing

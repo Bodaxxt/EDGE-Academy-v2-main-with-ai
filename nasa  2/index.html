@@ -7,7 +7,7 @@
   <meta name="description" content="Aerospace screening architecture cross-referencing NASA Physical Sciences Informatics microgravity combustion research against lunar exploration mission envelopes." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body>
@@ -77,20 +77,171 @@
   </header>
 
   <main id="main-content" class="main-layout">
-    <!-- HERO SECTION: Living Morphing Flame (Three.js WebGL) -->
-    <section class="hero-section" id="hero" aria-label="Hero: Morphing microgravity combustion physics">
+    <!-- HERO SECTION: High-End Cinematic Void & Lunar Horizon HUD -->
+    <section class="cinematic-hero" id="hero" aria-label="Hero: Untethered Flame & Lunar Horizon Telemetry">
+      <!-- Background Cosmic Atmosphere & Rim Glow -->
+      <div class="space-void-bg" aria-hidden="true">
+        <div class="stars-layer"></div>
+        <div class="horizon-rim-glow"></div>
+        <div class="ambient-nebula-cyan"></div>
+        <div class="ambient-nebula-amber"></div>
+      </div>
+
+      <!-- Top Minimalist Floating Mission Bar -->
+      <div class="mission-status-bar glass-pill mono" role="region" aria-label="Artemis Mission Protocol Status">
+        <div class="mission-pill-item">
+          <span class="status-dot-radar"></span>
+          <span class="pill-label">IGNIS ATLAS</span>
+          <span class="pill-divider">//</span>
+          <span class="pill-val">ARTEMIS MISSION PROTOCOL</span>
+        </div>
+        <div class="mission-pill-item hide-mobile">
+          <span class="pill-label">MET:</span>
+          <span class="pill-val text-cyan" id="mission-elapsed-time">00:14:49</span>
+        </div>
+        <div class="mission-pill-item">
+          <span class="pill-tag">LIVE PSI TELEMETRY</span>
+        </div>
+      </div>
+
+      <!-- Hero Main Visual Stage: Grand Moon/Earth Limb Centerpiece with HUD Pins -->
+      <div class="celestial-stage-container">
+        <!-- Floating Dramatic Title & Monospace Briefing -->
+        <div class="hero-typography-block">
+          <div class="hero-pretitle mono">
+            <span class="hud-bracket">[</span> PHASE 04 // Cis-Lunar Atmospheric Screening <span class="hud-bracket">]</span>
+          </div>
+          <h1 class="hero-cinematic-title">
+            U N T E T H E R E D<br />
+            <span class="text-glow-gradient">F L A M E</span>
+          </h1>
+          <p class="hero-cinematic-sub mono">
+            80,000 MILES FROM EARTH. FRACTIONAL GRAVITY. ELEVATED OXYGEN.<br class="hide-mobile" />
+            MAPPING WHERE NASA GROUND TRUTH ENDS.
+          </p>
+        </div>
+
+        <!-- Grand Celestial Body & EVA Astronaut with 4 Interactive HUD Pins -->
+        <div class="celestial-globe-wrapper" id="hero-parallax-stage">
+          <!-- Deep Space Backdrop Layer -->
+          <div class="hero-space-backdrop-layer" aria-hidden="true"></div>
+
+          <!-- Central Celestial Globe with atmospheric horizon rim -->
+          <div class="celestial-globe" role="img" aria-label="Cinematic lunar surface and Earth limb horizon illuminated in deep cosmic void">
+            <div class="globe-rim-light"></div>
+            <div class="globe-surface-texture"></div>
+            <div class="globe-inner-shadow"></div>
+            <!-- Central Habitat Target Pulsing Radar Ring -->
+            <div class="habitat-core-target" aria-hidden="true">
+              <span class="core-ping"></span>
+              <span class="core-dot"></span>
+              <span class="core-label mono">ARTEMIS BASE CAMP // SOUTH POLE</span>
+            </div>
+          </div>
+
+          <!-- Hero Detailed EVA Astronaut (Cinematic Floating Cutout) -->
+          <div class="hero-astronaut-layer" id="hero-astronaut-layer" aria-hidden="true">
+            <img src="/assets/hero-astronaut.jpg" alt="EVA Astronaut floating in lunar microgravity" class="hero-astronaut-img" />
+            <div class="astronaut-rim-highlight"></div>
+          </div>
+
+          <!-- Pin 1 (Top Left): ATM. OXYGEN -->
+          <div class="hud-telemetry-pin pin-top-left" data-pin="1">
+            <div class="pin-anchor">
+              <span class="pin-beacon beacon-amber"></span>
+              <span class="pin-dot dot-amber"></span>
+            </div>
+            <svg class="pin-hairline-svg svg-top-left" viewBox="0 0 160 80" aria-hidden="true">
+              <path d="M160 80 L60 80 L10 15" fill="none" stroke="rgba(255,153,0,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <circle cx="10" cy="15" r="2.5" fill="#FF9900" />
+            </svg>
+            <div class="pin-glass-card glass-card">
+              <span class="pin-card-meta mono">ATM. OXYGEN</span>
+              <div class="pin-card-val mono text-amber">34.0% OXYGEN</div>
+              <p class="pin-card-desc mono">[HIGH FLAMMABILITY ENVELOPE] // 1.6x TERRESTRIAL RATIO</p>
+            </div>
+          </div>
+
+          <!-- Pin 2 (Top Right): CABIN PRESSURE -->
+          <div class="hud-telemetry-pin pin-top-right" data-pin="2">
+            <div class="pin-anchor">
+              <span class="pin-beacon beacon-cyan"></span>
+              <span class="pin-dot dot-cyan"></span>
+            </div>
+            <svg class="pin-hairline-svg svg-top-right" viewBox="0 0 160 80" aria-hidden="true">
+              <path d="M0 80 L100 80 L150 15" fill="none" stroke="rgba(0,240,255,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <circle cx="150" cy="15" r="2.5" fill="#00F0FF" />
+            </svg>
+            <div class="pin-glass-card glass-card">
+              <span class="pin-card-meta mono">CABIN PRESSURE</span>
+              <div class="pin-card-val mono text-cyan">10.2 PSI (HYPOBARIC)</div>
+              <p class="pin-card-desc mono">HYPOBARIC ENVIRONMENT // RAPID EVA DECOMPRESSION SPEC</p>
+            </div>
+          </div>
+
+          <!-- Pin 3 (Bottom Left): SURFACE GRAVITY -->
+          <div class="hud-telemetry-pin pin-bottom-left" data-pin="3">
+            <div class="pin-anchor">
+              <span class="pin-beacon beacon-cyan"></span>
+              <span class="pin-dot dot-cyan"></span>
+            </div>
+            <svg class="pin-hairline-svg svg-bottom-left" viewBox="0 0 160 80" aria-hidden="true">
+              <path d="M160 0 L60 0 L10 65" fill="none" stroke="rgba(0,240,255,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <circle cx="10" cy="65" r="2.5" fill="#00F0FF" />
+            </svg>
+            <div class="pin-glass-card glass-card">
+              <span class="pin-card-meta mono">SURFACE GRAVITY</span>
+              <div class="pin-card-val mono text-cyan">0.16 g (LUNAR PARTIAL)</div>
+              <p class="pin-card-desc mono">LUNAR REGIME // INTERMEDIATE CONVECTION VOID</p>
+            </div>
+          </div>
+
+          <!-- Pin 4 (Bottom Right): NASA PSI ARCHIVE -->
+          <div class="hud-telemetry-pin pin-bottom-right" data-pin="4">
+            <div class="pin-anchor">
+              <span class="pin-beacon beacon-alert"></span>
+              <span class="pin-dot dot-alert"></span>
+            </div>
+            <svg class="pin-hairline-svg svg-bottom-right" viewBox="0 0 160 80" aria-hidden="true">
+              <path d="M0 0 L100 0 L150 65" fill="none" stroke="rgba(255,92,92,0.55)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <circle cx="150" cy="65" r="2.5" fill="#FF5C5C" />
+            </svg>
+            <div class="pin-glass-card glass-card border-gap">
+              <span class="pin-card-meta mono text-gap">NASA PSI ARCHIVE</span>
+              <div class="pin-card-val mono text-gap">ZERO FLIGHT DATA IN 0.16g</div>
+              <p class="pin-card-desc mono">[CRITICAL GAP] // HIGH-PRIORITY LUCI TARGET</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Magnetic Glowing Call To Action Button -->
+        <div class="hero-cta-container">
+          <a href="#views-container" class="magnetic-cta-btn mono" id="btn-hero-explore">
+            <span class="cta-cyan-glow"></span>
+            <span class="cta-inner-text">
+              <span>INITIALIZE ATLAS SCREENER</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </span>
+          </a>
+          <span class="cta-hint-sub mono">MISSION CONTROL TELEMETRY &bull; SCROLL TO DECEND</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D FLAME LABORATORY SECTION: Morphing Microgravity Combustion Physics -->
+    <section class="flame-lab-section" id="flame-lab" aria-label="3D Morphing microgravity combustion physics stage">
       <div class="hero-inner">
         <div class="hero-header">
           <div class="hero-status-pill">
             <span class="status-radar-dot"></span>
-            <span>NASA Space Apps Challenge // Flight Fire Safety</span>
+            <span>THREE.JS WEBGL KINETIC FLUID BENCHMARK</span>
           </div>
-          <h1 class="hero-title">
-            The Physics of Fire <br />
-            <span class="text-gradient">Where Gravity Ceases</span>
-          </h1>
-          <p class="hero-lead">
-            Screening NASA's Physical Sciences Informatics (PSI) combustion experiments against lunar exploration envelopes. Not a fire simulator. A tool for what we know—and what remains unmapped.
+          <h2 class="section-title">
+            Dynamic Flame Morphology <br />
+            <span class="text-gradient">From Buoyant Plume to 0g Diffusion Sphere</span>
+          </h2>
+          <p class="section-desc" style="max-width:760px; margin:0 auto;">
+            Interactive GLSL Simplex Noise simulation mapping gravity-dependent soot extinction and flame geometry across 1.00g (Earth), 0.38g (Mars), 0.16g (Moon), and 0.00g (Orbital Microgravity).
           </p>
         </div>
 
