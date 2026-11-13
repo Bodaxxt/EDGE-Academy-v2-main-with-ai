@@ -19,58 +19,39 @@
   <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
   <div class="ambient-grid-lines" aria-hidden="true"></div>
 
-  <!-- Aerospace App Header -->
-  <header class="app-header" role="banner">
+  <!-- App Header: High-End InOrbit Minimalist Floating Navigation Bar -->
+  <header class="app-header inorbit-header" role="banner">
     <div class="header-inner">
       <div class="brand">
-        <div class="brand-symbol" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2c-3 4-6 7.5-6 12a6 6 0 0 0 12 0c0-4.5-3-8-6-12z" fill="url(#brandFlameGrad)" stroke="none"/>
-            <path d="M12 9c-1.5 2-3 3.75-3 6a3 3 0 0 0 6 0c0-2.25-1.5-4-3-6z" fill="#FFFFFF"/>
-            <defs>
-              <linearGradient id="brandFlameGrad" x1="12" y1="2" x2="12" y2="20" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFFFFF"/>
-                <stop offset="1" stop-color="#00D2FF"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <div class="brand-title-row">
-            <span class="brand-title">IGNIS ATLAS</span>
-            <span class="brand-version-pill">v3.0 // PRODUCTION</span>
-          </div>
-          <span class="brand-subtitle">Physical Sciences Informatics Telemetry &bull; Lunar Atmosphere Screening</span>
-        </div>
+        <a href="#hero" class="brand-inorbit-link" aria-label="Ignis Atlas Home">
+          <span class="inorbit-logo-text">ignis<span class="inorbit-planet-glyph" aria-hidden="true"></span>atlas</span>
+        </a>
       </div>
 
-      <!-- Navigation Tabs -->
-      <nav class="nav-tabs" role="tablist" aria-label="Primary Navigation">
+      <!-- Navigation Tabs: InOrbit Compact Pill Style -->
+      <nav class="nav-tabs inorbit-nav-tabs" role="tablist" aria-label="Primary Navigation">
         <button id="tab-atlas" role="tab" aria-selected="true" aria-controls="view-atlas" tabindex="0" class="tab-btn active">
-          <svg class="tab-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          <span>Star-Map Atlas</span>
+          <span>Star-Map</span>
         </button>
         <button id="tab-passport" role="tab" aria-selected="false" aria-controls="view-passport" tabindex="-1" class="tab-btn">
-          <svg class="tab-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <span>Material Passport</span>
         </button>
         <button id="tab-gaps" role="tab" aria-selected="false" aria-controls="view-gaps" tabindex="-1" class="tab-btn">
-          <svg class="tab-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <span>Gaps &amp; Spin-Offs</span>
+        </button>
+        <button id="btn-about" class="tab-btn" aria-haspopup="dialog" aria-controls="modal-about">
+          <span>About</span>
         </button>
       </nav>
 
-      <div class="header-actions">
-        <button id="btn-judge-demo" class="btn-demo-tour mono" aria-label="Launch 30s evaluation tour">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span>EVALUATION TOUR (30s)</span>
+      <div class="header-actions inorbit-header-actions">
+        <button id="btn-judge-demo" class="inorbit-action-pill mono" aria-label="Launch 30s evaluation tour">
+          <span class="inorbit-action-dot"></span>
+          <span>EVALUATION TOUR</span>
         </button>
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle visual theme" title="Switch Theme">
-          <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-        <button id="btn-about" class="btn-ghost" aria-haspopup="dialog" aria-controls="modal-about">
-          <span>About / Limits</span>
+        <button id="theme-toggle" class="inorbit-icon-btn" aria-label="Toggle visual theme" title="Switch Theme">
+          <svg class="theme-icon-dark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
       </div>
     </div>
@@ -169,10 +150,17 @@
         <!-- Center Bottom: Iconic InOrbit Circular "Explore" Trigger Button -->
         <div class="inorbit-center-action">
           <a href="#views-container" class="inorbit-explore-disc" id="btn-hero-explore" aria-label="Explore Atlas Screening Engine">
-            <div class="disc-glow-ring"></div>
-            <div class="disc-content">
-              <span class="disc-text">Explore</span>
-              <svg class="disc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            <!-- Pulsing outer radar shockwave -->
+            <div class="disc-shockwave-ring" aria-hidden="true"></div>
+            <!-- Secondary rotating dashed technical ring -->
+            <div class="disc-dashed-tech-ring" aria-hidden="true"></div>
+            <!-- Glass core disc with futuristic HUD elements -->
+            <div class="disc-glass-core">
+              <span class="disc-sub-badge mono">ECLSS // STAR-MAP</span>
+              <span class="disc-main-title">Explore</span>
+              <div class="disc-animated-arrow-wrap">
+                <svg class="disc-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="4" x2="12" y2="18"/><polyline points="18 12 12 18 6 12"/></svg>
+              </div>
             </div>
           </a>
         </div>
