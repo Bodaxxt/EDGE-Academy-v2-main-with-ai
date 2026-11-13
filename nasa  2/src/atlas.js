@@ -895,7 +895,7 @@ export class IgnisAtlas {
       if (!mat.hasMicrogravityRecords) {
         // Strict Sprint 2 Rule: Zero microgravity combustion records in PSI
         status = 'gap';
-        statusBadge = '🔴 DATA GAP [✕]';
+        statusBadge = '[✕] DATA GAP';
         statusClass = 'mat-status-gap';
         tagText = 'HIGH-PRIORITY BENCHMARK FOR UPCOMING LUCI / FM2 LUNAR MISSION';
         reasonText = 'Material has zero microgravity combustion records in PSI. Flammability limits and pyrolysis kinetics under spaceflight environments remain unmeasured.';
@@ -908,14 +908,14 @@ export class IgnisAtlas {
         if (this.currentGravity === '0g' && insideO2 && insideP) {
           // 🟢 COVERED [✓]
           status = 'covered';
-          statusBadge = '🟢 COVERED [✓]';
+          statusBadge = '[✓] COVERED';
           statusClass = 'mat-status-ok';
           reasonText = `Material tested in microgravity (${mat.testedIn.join(', ')}). Current conditions (${this.currentO2.toFixed(1)}% O₂, ${this.currentPressure.toFixed(1)} psi) fall within verified bounds.`;
           coveredCount++;
         } else {
           // 🟡 EXTRAPOLATED / NEAR [~]
           status = 'near';
-          statusBadge = '🟡 EXTRAPOLATED / NEAR [~]';
+          statusBadge = '[~] EXTRAPOLATED';
           statusClass = 'mat-status-near';
 
           if (this.currentGravity === 'lunar') {
