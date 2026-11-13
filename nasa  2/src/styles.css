@@ -5270,30 +5270,669 @@ button {
   color: var(--text-dim);
 }
 
-.oracle-action-outline {
+/* ==========================================================================
+   IGNIS AUTONOMOUS FLIGHT SAFETY AGENT & SCI-FI TERMINAL UI
+   ========================================================================== */
+
+/* 1. Floating Agent Trigger Capsule (Bottom-Right Command Deck Dock) */
+.floating-agent-dock {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 999;
+}
+
+.agent-dock-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(3, 9, 20, 0.90);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  color: #A5F3FC;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.28), 0 10px 30px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.agent-dock-pill:hover {
+  background: rgba(4, 14, 32, 0.96);
+  border-color: #00F0FF;
+  box-shadow: 0 0 45px rgba(0, 240, 255, 0.5), 0 14px 40px rgba(0, 0, 0, 0.9);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.agent-dock-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 12px #10B981;
+  animation: agent-dot-pulse 2s infinite ease-in-out;
+}
+
+@keyframes agent-dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 1; filter: drop-shadow(0 0 8px #10B981); }
+}
+
+.agent-dock-icon {
+  font-size: 1rem;
+  color: #00F0FF;
+  filter: drop-shadow(0 0 8px #00F0FF);
+}
+
+.agent-dock-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F8FAFC;
+}
+
+.agent-dock-state-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #6EE7B7;
+}
+
+/* 2. Slide-Over Terminal Container */
+.oracle-panel {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 100%;
+  background: rgba(2, 5, 14, 0.96);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
+  border-left: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow: -25px 0 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(0, 210, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* Header Upgrades */
+.oracle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: rgba(6, 11, 24, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.oracle-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.oracle-radar-beacon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00F0FF;
+  box-shadow: 0 0 14px #00F0FF;
+  animation: radar-live-blink 2s infinite ease-in-out;
+}
+
+.oracle-h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
+.oracle-sub-meta {
+  font-size: 0.7rem;
+  color: #94A3B8;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.oracle-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.oracle-mini-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 210, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94A3B8;
+  padding: 6px 12px;
   border-radius: 6px;
-  color: #00F0FF;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
+.oracle-mini-btn:hover {
+  color: #FFF;
+  border-color: rgba(0, 240, 255, 0.5);
+  background: rgba(0, 240, 255, 0.1);
+}
 
-.oracle-action-outline:hover:not(:disabled) {
-  background: rgba(0, 210, 255, 0.15);
-  border-color: #00F0FF;
+.oracle-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.oracle-close-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #EF4444;
+  color: #EF4444;
+}
+
+/* Telemetry Strip */
+.oracle-telemetry-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(0, 240, 255, 0.035);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  font-size: 0.74rem;
+}
+
+.telemetry-pill-tag {
+  color: #64748B;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.telemetry-pill-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #E2E8F0;
+}
+.telemetry-pill-strip strong {
+  color: #00F0FF;
+}
+.t-sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Command Deck CTA */
+.oracle-action-card {
+  background: linear-gradient(180deg, rgba(14, 25, 48, 0.6) 0%, rgba(4, 9, 20, 0.8) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.action-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.card-step-badge {
+  font-size: 0.72rem;
+  color: #00F0FF;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.card-step-sub {
+  font-size: 0.68rem;
+  color: #64748B;
+}
+
+.oracle-hero-cta {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, rgba(0, 160, 255, 0.4) 0%, rgba(0, 240, 255, 0.6) 100%);
+  border: 1px solid #00F0FF;
+  border-radius: 8px;
+  color: #FFF;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.oracle-hero-cta:hover {
+  background: linear-gradient(135deg, rgba(0, 180, 255, 0.55) 0%, rgba(0, 240, 255, 0.8) 100%);
+  box-shadow: 0 0 45px rgba(0, 240, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Quick-Inject Emergency Chips */
+.oracle-scenarios-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-tag-accent {
+  font-size: 0.72rem;
+  color: #38BDF8;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.section-tag-desc {
+  font-size: 0.68rem;
+  color: #64748B;
+}
+
+.scenarios-chips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .scenarios-chips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emergency-chip-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(10, 18, 36, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #E2E8F0;
+  font-size: 0.74rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.emergency-chip-btn:hover {
+  background: rgba(16, 28, 54, 0.95);
+  border-color: rgba(0, 240, 255, 0.5);
+  transform: translateY(-1px);
   color: #FFF;
 }
 
-.oracle-action-outline:disabled {
+.chip-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.chip-badge.warn { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+.chip-badge.crit { background: rgba(56, 189, 248, 0.2); color: #38BDF8; }
+.chip-badge.fix { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+.chip-badge.danger { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+
+.chip-title {
+  flex: 1;
+  line-height: 1.35;
+}
+
+/* 4. Live Multi-Step Reasoning Trace Deck */
+.oracle-trace-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trace-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.trace-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.trace-header-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+}
+.trace-header-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F8FAFC;
+}
+.trace-header-status {
+  font-size: 0.68rem;
+  color: #64748B;
+}
+.status-running {
+  color: #FBBF24;
+  animation: radar-live-blink 1.2s infinite ease-in-out;
+}
+.status-done {
+  color: #10B981;
+}
+
+.trace-pipeline-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trace-idle-card {
+  padding: 30px 20px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(6, 12, 24, 0.4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.idle-glyph {
+  font-size: 2rem;
+  color: rgba(0, 240, 255, 0.4);
+}
+.idle-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.08em;
+}
+.idle-p {
+  font-size: 0.74rem;
+  color: #64748B;
+  max-width: 420px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Step Card */
+.trace-step-card {
+  background: rgba(8, 16, 32, 0.8);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: all 0.3s ease;
+  animation: step-appear 0.35s ease;
+}
+
+@keyframes step-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.trace-step-card.pending {
   opacity: 0.4;
-  cursor: not-allowed;
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--text-dim);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.step-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #94A3B8;
+}
+.step-type.thought { color: #38BDF8; font-weight: 600; font-size: 0.72rem; }
+.step-type.tool { color: #A78BFA; font-weight: 600; font-size: 0.72rem; }
+
+.step-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.step-badge.running {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  animation: radar-live-blink 1s infinite ease-in-out;
+}
+.step-badge.success {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.step-badge.warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.step-badge.pending {
+  background: rgba(255, 255, 255, 0.05);
+  color: #64748B;
+}
+
+.step-content {
+  font-size: 0.78rem;
+  color: #E2E8F0;
+  line-height: 1.55;
+}
+
+/* 5. Final Flight Directive Card */
+.final-directive-card {
+  background: linear-gradient(180deg, rgba(7, 16, 36, 0.95) 0%, rgba(3, 8, 20, 0.98) 100%);
+  border: 1px solid #00F0FF;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+  margin-top: 10px;
+  animation: step-appear 0.4s ease;
+}
+
+.memo-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.memo-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #38BDF8;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.memo-code {
+  font-size: 0.7rem;
+  color: #FBBF24;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.memo-title {
+  font-size: 0.92rem;
+  color: #FFF;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.memo-metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  background: rgba(3, 7, 15, 0.7);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+.meta-item .lbl { font-size: 0.65rem; color: #64748B; margin-right: 4px; }
+.meta-item .val { font-size: 0.72rem; color: #FFF; font-weight: 600; }
+
+.memo-section-block {
+  margin-bottom: 14px;
+}
+.memo-sub {
+  font-size: 0.72rem;
+  color: #00F0FF;
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+.memo-p {
+  font-size: 0.78rem;
+  color: #CBD5E1;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.memo-citations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cit-row {
+  font-size: 0.72rem;
+  background: rgba(2, 6, 14, 0.6);
+  padding: 8px 10px;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+.cit-id { color: #FFF; font-weight: 700; margin-right: 6px; }
+.cit-link { color: #38BDF8; text-decoration: none; margin-right: 6px; }
+.cit-link:hover { text-decoration: underline; }
+.cit-note { color: #94A3B8; display: block; margin-top: 2px; }
+
+.memo-ul {
+  padding-left: 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #E2E8F0;
+  line-height: 1.5;
+}
+.memo-ul strong { color: #00F0FF; }
+
+.memo-action-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.memo-action-btn {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.memo-action-btn.primary {
+  background: linear-gradient(135deg, rgba(0, 160, 255, 0.3) 0%, rgba(0, 240, 255, 0.5) 100%);
+  border: 1px solid #00F0FF;
+  color: #FFF;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+.memo-action-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(0, 180, 255, 0.5) 0%, rgba(0, 240, 255, 0.75) 100%);
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.memo-action-btn.secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #E2E8F0;
+}
+.memo-action-btn.secondary:hover {
+  background: rgba(0, 240, 255, 0.12);
+  border-color: #00F0FF;
+  color: #FFF;
+  transform: translateY(-1px);
+}
+
+/* Scenario Result Box */
+.scenario-result-box {
+  background: rgba(8, 16, 32, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 10px;
+}
+.box-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.res-tag { font-size: 0.68rem; color: #00F0FF; font-weight: 700; }
+.res-id { font-size: 0.65rem; color: #94A3B8; }
+.res-body { font-size: 0.78rem; color: #F1F5F9; line-height: 1.55; margin: 0; }
+
+/* Footer Bar */
+.oracle-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: rgba(4, 9, 20, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.68rem;
+  color: #64748B;
+}
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
 }
 
