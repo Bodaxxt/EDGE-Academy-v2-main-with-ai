@@ -7,6 +7,7 @@ import './styles.css';
 import { HeroFlame } from './flame.js';
 import { initScrollStory } from './story.js';
 import { IgnisAtlas } from './atlas.js';
+import { IgnisOracle } from './oracle.js';
 import Lenis from 'lenis';
 
 function initApp() {
@@ -59,6 +60,14 @@ function initApp() {
     console.log('[Ignis Atlas] Atlas engine initialized successfully.');
   } catch (err) {
     console.error('[Ignis Atlas] Error initializing Atlas:', err);
+  }
+
+  // 4.1 Initialize Ignis Cognitive Safety Oracle
+  try {
+    window.ignisOracle = new IgnisOracle();
+    console.log('[Ignis Atlas] Cognitive Safety Oracle initialized.');
+  } catch (err) {
+    console.error('[Ignis Atlas] Error initializing Oracle:', err);
   }
 
   // 5. Initialize Cinematic Hero Parallax & Mouse Interactivity
