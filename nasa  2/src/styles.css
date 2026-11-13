@@ -433,6 +433,24 @@ button {
   box-shadow: 0 0 12px rgba(0, 210, 255, 0.2);
 }
 
+.nav-indicator-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00E5A3;
+  box-shadow: 0 0 10px #00E5A3;
+  margin-right: 7px;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inorbit-nav-tabs .tab-btn.active .nav-indicator-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* Right Actions Pill */
 .inorbit-header-actions {
   display: flex;
@@ -1258,6 +1276,119 @@ button {
   position: relative;
 }
 
+/* ==========================================================================
+   CYBER-AEROSPACE DASHBOARD: ORBITAL EARTH BACKGROUND
+   ========================================================================== */
+.views-earth-background {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  left: auto;
+  transform: none;
+  width: 1000px;
+  height: 750px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse 70% 65% at 75% 35%, black 40%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 75% 35%, black 40%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+}
+
+.views-earth-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80% 30%;
+  opacity: 0.65;
+  filter: contrast(1.15) brightness(0.95);
+  transform: scale(1.05);
+}
+
+.views-earth-atmosphere {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 35%, rgba(0, 210, 255, 0.15) 0%, rgba(0, 80, 220, 0.08) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.views-hud-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 210, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 75%);
+  pointer-events: none;
+}
+
+/* Cockpit glass upgrade for dashboard panels */
+#views-container .glass-card {
+  background: rgba(11, 17, 30, 0.80);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 40px rgba(0, 100, 255, 0.04);
+}
+
+#views-container .glass-card:hover {
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(0, 210, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   TACTICAL DATA CONNECTOR BRIDGE (ECLSS → Passport)
+   ========================================================================== */
+.tactical-connector-bridge {
+  width: 60px;
+  align-self: stretch;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.connector-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pulsing-trace {
+  stroke-linecap: round;
+  animation: trace-flow 3s ease-in-out infinite;
+}
+
+.trace-1 { animation-delay: 0s; }
+.trace-2 { animation-delay: 1s; }
+.trace-3 { animation-delay: 2s; }
+
+@keyframes trace-flow {
+  0%, 100% { stroke-opacity: 0.6; }
+  50% { stroke-opacity: 1; }
+}
+
+.trace-dot {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
 /* In-section tab bar for instantaneous access */
 .section-tab-bar {
   display: inline-flex;
@@ -1441,12 +1572,12 @@ button {
    SVG CHART STYLING & RADAR EFFECTS
    ========================================================================== */
 .chart-grid-line {
-  stroke: rgba(255, 255, 255, 0.07);
-  stroke-dasharray: 3 4;
+  stroke: rgba(0, 210, 255, 0.07);
+  stroke-dasharray: 2 5;
 }
 
 .chart-axis-line {
-  stroke: rgba(255, 255, 255, 0.25);
+  stroke: rgba(0, 210, 255, 0.35);
   stroke-width: 1.5;
 }
 
@@ -2281,17 +2412,17 @@ button {
 }
 
 .midpoint-glyph.glyph-liquid {
-  fill: #4AA8FF;
+  fill: #F59E0B;
   stroke: #FFFFFF;
   stroke-width: 1.5;
-  filter: drop-shadow(0 0 8px rgba(74, 168, 255, 0.7));
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.7));
 }
 
 .midpoint-glyph.glyph-gas {
-  fill: #3DDC97;
+  fill: #00E5A3;
   stroke: #FFFFFF;
   stroke-width: 1.5;
-  filter: drop-shadow(0 0 8px rgba(61, 220, 151, 0.7));
+  filter: drop-shadow(0 0 8px rgba(0, 229, 163, 0.7));
 }
 
 .star-map-node-group {
@@ -2397,8 +2528,8 @@ button {
    ========================================================================== */
 .passport-sprint2-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 28px;
+  grid-template-columns: 420px 60px 1fr;
+  gap: 0;
   align-items: start;
 }
 
@@ -3130,6 +3261,9 @@ button {
   .passport-sprint2-grid {
     grid-template-columns: 1fr;
   }
+  .tactical-connector-bridge {
+    display: none;
+  }
   .eclss-controls-card {
     position: static;
   }
@@ -3138,6 +3272,11 @@ button {
   }
   .gaps-grid {
     grid-template-columns: 1fr;
+  }
+  .views-earth-background {
+    width: 500px;
+    height: 500px;
+    opacity: 0.4;
   }
 }
 

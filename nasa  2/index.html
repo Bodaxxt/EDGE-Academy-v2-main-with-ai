@@ -28,15 +28,18 @@
         </a>
       </div>
 
-      <!-- Navigation Tabs: InOrbit Compact Pill Style -->
+      <!-- Navigation Tabs: Cyber-Aerospace Compact Floating Pill Style -->
       <nav class="nav-tabs inorbit-nav-tabs" role="tablist" aria-label="Primary Navigation">
         <button id="tab-atlas" role="tab" aria-selected="true" aria-controls="view-atlas" tabindex="0" class="tab-btn active">
-          <span>Star-Map</span>
+          <span class="nav-indicator-dot" aria-hidden="true"></span>
+          <span>Overview / Atlas</span>
         </button>
         <button id="tab-passport" role="tab" aria-selected="false" aria-controls="view-passport" tabindex="-1" class="tab-btn">
-          <span>Material Passport</span>
+          <span class="nav-indicator-dot" aria-hidden="true"></span>
+          <span>Mission Passport</span>
         </button>
         <button id="tab-gaps" role="tab" aria-selected="false" aria-controls="view-gaps" tabindex="-1" class="tab-btn">
+          <span class="nav-indicator-dot" aria-hidden="true"></span>
           <span>Gaps &amp; Spin-Offs</span>
         </button>
         <button id="btn-about" class="tab-btn" aria-haspopup="dialog" aria-controls="modal-about">
@@ -365,8 +368,15 @@
       </div>
     </section>
 
-    <!-- VIEWS CONTAINER (TABS) -->
+    <!-- VIEWS CONTAINER (TABS) with Cyber-Aerospace Orbital Earth Background -->
     <div id="views-container" class="views-container">
+      
+      <!-- Atmospheric Orbital Earth Viewport (Cinematic Deep Space Background) -->
+      <div class="views-earth-background" aria-hidden="true">
+        <img class="views-earth-img" src="/assets/images/earth_dashboard_backdrop.jpg" alt="" loading="lazy" />
+        <div class="views-earth-atmosphere"></div>
+        <div class="views-hud-grid-overlay"></div>
+      </div>
       
       <!-- IN-SECTION TAB SWITCHER (For instantaneous navigation) -->
       <div class="section-tab-bar" role="tablist" aria-label="In-section Navigation">
@@ -556,6 +566,35 @@
                 <strong>ECLSS Note:</strong> Atmospheric screening evaluates empirical database bounds in NASA PSI. Does not replace physical flammability qualification under NASA-STD-6001.
               </p>
             </div>
+          </div>
+
+          <!-- Tactical Data Connectors SVG Bridge (Hairline Flow Paths) -->
+          <div class="tactical-connector-bridge" aria-hidden="true">
+            <svg class="connector-svg" viewBox="0 0 60 480" fill="none" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="traceGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.95"/>
+                  <stop offset="100%" stop-color="#00D2FF" stop-opacity="0.4"/>
+                </linearGradient>
+                <linearGradient id="traceGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.95"/>
+                  <stop offset="100%" stop-color="#FFB800" stop-opacity="0.4"/>
+                </linearGradient>
+              </defs>
+              <!-- O2 Telemetry Line -->
+              <path d="M 0 110 C 35 110, 25 80, 60 80" stroke="url(#traceGradCyan)" stroke-width="1.8" class="pulsing-trace trace-1"/>
+              <!-- Pressure Telemetry Line -->
+              <path d="M 0 230 C 35 230, 25 200, 60 200" stroke="url(#traceGradAmber)" stroke-width="1.8" class="pulsing-trace trace-2"/>
+              <!-- Airflow / Gravity Telemetry Line -->
+              <path d="M 0 350 C 35 350, 25 320, 60 320" stroke="url(#traceGradCyan)" stroke-width="1.8" class="pulsing-trace trace-3"/>
+              <!-- Terminus Dots -->
+              <circle cx="0" cy="110" r="3" fill="#00F0FF" class="trace-dot"/>
+              <circle cx="60" cy="80" r="3" fill="#00F0FF" class="trace-dot"/>
+              <circle cx="0" cy="230" r="3" fill="#F59E0B" class="trace-dot"/>
+              <circle cx="60" cy="200" r="3" fill="#F59E0B" class="trace-dot"/>
+              <circle cx="0" cy="350" r="3" fill="#00F0FF" class="trace-dot"/>
+              <circle cx="60" cy="320" r="3" fill="#00F0FF" class="trace-dot"/>
+            </svg>
           </div>
 
           <!-- Material Safety Passport Cards Grid (Sprint 2 Core) -->
