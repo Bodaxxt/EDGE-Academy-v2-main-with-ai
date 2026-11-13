@@ -4,41 +4,41 @@
    ========================================================================== */
 
 :root {
-  /* Cinematic Void Palette Tokens */
-  --void-bg: #02040A;
-  --bg: #040711;
-  --bg-gradient: radial-gradient(circle at 50% 0%, #0d1527 0%, #02040A 75%);
-  --surface: #070B16;
-  --surface-hover: #0D1426;
-  --surface-glass: rgba(7, 11, 22, 0.75);
+  /* Ultra-Clean Cinematic Monochromatic Space Tokens (Black / White / Cold Light Cyan) */
+  --void-bg: #03060C;
+  --bg: #050811;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0a1122 0%, #03060C 85%);
+  --surface: #070C18;
+  --surface-hover: #0E162A;
+  --surface-glass: rgba(7, 12, 24, 0.72);
   --surface-border: rgba(255, 255, 255, 0.08);
-  --surface-border-hover: rgba(0, 240, 255, 0.45);
+  --surface-border-hover: rgba(0, 210, 255, 0.45);
 
-  --text: #F0F4FC;
-  --text-muted: #94A3B8;
-  --text-dim: #4B5565;
+  --text: #FFFFFF;
+  --text-muted: #8E9BB0;
+  --text-dim: #4B586E;
 
-  /* Luminous Aerospace Spectral Accents */
-  --flame: #FF9900;
-  --flame-glow: rgba(255, 153, 0, 0.4);
-  --cyan-neon: #00F0FF;
-  --cyan-glow: rgba(0, 240, 255, 0.35);
-  --space-blue: #0052FF;
-  --cold-flame: #4AA8FF;
-  --cold-flame-glow: rgba(74, 168, 255, 0.35);
+  /* Strict Clean Palette: White, Electric Cyan (#00D2FF / #00F0FF), Slate */
+  --flame: #00D2FF;
+  --flame-glow: rgba(0, 210, 255, 0.35);
+  --cyan-neon: #00D2FF;
+  --cyan-glow: rgba(0, 210, 255, 0.35);
+  --space-blue: #0088FF;
+  --cold-flame: #00D2FF;
+  --cold-flame-glow: rgba(0, 210, 255, 0.3);
 
-  /* Status Tokens */
-  --ok: #3DDC97;
-  --ok-glow: rgba(61, 220, 151, 0.25);
-  --near: #FF9900;
-  --near-glow: rgba(255, 153, 0, 0.25);
-  --gap: #FF5C5C;
-  --gap-glow: rgba(255, 92, 92, 0.25);
+  /* Status Tokens: Clean Monochromatic / Cyan Highlights */
+  --ok: #00E5A3;
+  --ok-glow: rgba(0, 229, 163, 0.25);
+  --near: #00D2FF;
+  --near-glow: rgba(0, 210, 255, 0.25);
+  --gap: #FF4A6E;
+  --gap-glow: rgba(255, 74, 110, 0.25);
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --font-display: 'Syncopate', 'Space Grotesk', -apple-system, sans-serif;
+  --font-display: 'Inter', -apple-system, sans-serif;
 
   /* Radii & Curves */
   --radius-xs: 4px;
@@ -65,14 +65,14 @@
   --text-muted: #4B5565;
   --text-dim: #718096;
 
-  --flame: #E65A0D;
+  --flame: #0088FF;
   --flame-glow: rgba(230, 90, 13, 0.18);
   --cold-flame: #0077D6;
   --cold-flame-glow: rgba(0, 119, 214, 0.18);
 
   --ok: #15803D;
   --ok-glow: rgba(21, 128, 61, 0.15);
-  --near: #B45309;
+  --near: #00D2FF;
   --near-glow: rgba(180, 83, 9, 0.15);
   --gap: #DC2626;
   --gap-glow: rgba(220, 38, 38, 0.15);
@@ -213,7 +213,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: linear-gradient(135deg, #FF7A2F 0%, #E65A0D 100%);
+  background: linear-gradient(135deg, #00D2FF 0%, #0088FF 100%);
   color: #FFFFFF;
   font-weight: 600;
   padding: 12px 24px;
@@ -495,7 +495,7 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #FF7A2F 0%, #FFC857 45%, #4AA8FF 100%);
+  background: linear-gradient(90deg, #00D2FF 0%, #00D2FF 45%, #4AA8FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -549,7 +549,7 @@ button {
   width: 140px;
   height: 180px;
   border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
-  background: linear-gradient(to top, #4AA8FF 0%, #FF7A2F 60%, #FFC857 100%);
+  background: linear-gradient(to top, #4AA8FF 0%, #00D2FF 60%, #00D2FF 100%);
   box-shadow: 0 0 35px var(--flame-glow);
 }
 
@@ -625,7 +625,7 @@ button {
   width: 100%;
   height: 8px;
   border-radius: 4px;
-  background: linear-gradient(90deg, #4AA8FF 0%, #FFC857 50%, #FF7A2F 100%);
+  background: linear-gradient(90deg, #4AA8FF 0%, #00D2FF 50%, #00D2FF 100%);
   outline: none;
   -webkit-appearance: none;
   appearance: none;
@@ -700,7 +700,7 @@ button {
 .story-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #4AA8FF, #FF7A2F);
+  background: linear-gradient(90deg, #4AA8FF, #00D2FF);
   transition: width 0.1s linear;
 }
 
@@ -1107,7 +1107,7 @@ button {
 
 .lunar-target-rect {
   fill: rgba(255, 200, 87, 0.1);
-  stroke: #FFC857;
+  stroke: #00D2FF;
   stroke-width: 2;
   stroke-dasharray: 6 6;
   filter: drop-shadow(0 0 12px rgba(255, 200, 87, 0.35));
@@ -1899,7 +1899,7 @@ button {
 }
 
 .midpoint-glyph.glyph-solid {
-  fill: #FF7A2F;
+  fill: #00D2FF;
   stroke: #FFFFFF;
   stroke-width: 1.5;
   filter: drop-shadow(0 0 8px rgba(255, 122, 47, 0.7));
@@ -1947,7 +1947,7 @@ button {
 
 .node-aura-pulse {
   fill: none;
-  stroke: #FF7A2F;
+  stroke: #00D2FF;
   stroke-width: 1.5;
   opacity: 0.4;
   animation: node-radar-pulse 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
@@ -1997,7 +1997,7 @@ button {
 }
 
 .glyph-square {
-  background: #FF7A2F;
+  background: #00D2FF;
   border: 1.5px solid #FFFFFF;
   border-radius: 2px;
   box-shadow: 0 0 8px rgba(255, 122, 47, 0.6);
@@ -2494,7 +2494,7 @@ button {
   gap: 7px;
   background: linear-gradient(135deg, rgba(255, 122, 47, 0.18) 0%, rgba(255, 200, 87, 0.12) 100%);
   border: 1px solid rgba(255, 122, 47, 0.55);
-  color: #FFC857;
+  color: #00D2FF;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2507,14 +2507,14 @@ button {
 
 .btn-demo-tour:hover {
   background: linear-gradient(135deg, rgba(255, 122, 47, 0.3) 0%, rgba(255, 200, 87, 0.25) 100%);
-  border-color: #FFC857;
+  border-color: #00D2FF;
   color: #FFFFFF;
   box-shadow: 0 0 24px rgba(255, 200, 87, 0.4);
   transform: translateY(-1px);
 }
 
 .btn-demo-tour svg {
-  color: #FF7A2F;
+  color: #00D2FF;
   filter: drop-shadow(0 0 6px rgba(255, 122, 47, 0.8));
 }
 
@@ -2631,7 +2631,7 @@ button {
 .tour-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #FF7A2F, #FFC857);
+  background: linear-gradient(90deg, #00D2FF, #00D2FF);
   transition: width 0.25s linear;
   box-shadow: 0 0 10px rgba(255, 122, 47, 0.8);
 }
@@ -2879,7 +2879,7 @@ button {
 }
 
 .glyph-square {
-  background: #FF7A2F;
+  background: #00D2FF;
   border: 1.5px solid rgba(255,255,255,0.7);
   border-radius: 2px;
   box-shadow: 0 0 10px rgba(255, 122, 47, 0.7);
@@ -2909,7 +2909,7 @@ button {
 
 .swatch-lunar {
   background: rgba(255, 200, 87, 0.35);
-  border: 1.5px dashed #FFC857;
+  border: 1.5px dashed #00D2FF;
   box-shadow: 0 0 8px rgba(255, 200, 87, 0.4);
 }
 
@@ -2934,7 +2934,7 @@ button {
 
 .mat-status-near .mat-status-badge {
   background: rgba(255, 200, 87, 0.18);
-  color: #FFC857;
+  color: #00D2FF;
   border: 1.5px solid rgba(255, 200, 87, 0.55);
   box-shadow: 0 0 14px rgba(255, 200, 87, 0.28), inset 0 1px 0 rgba(255,200,87,0.15);
 }
@@ -2948,7 +2948,7 @@ button {
 
 /* --- Material Card Left Border Accent --- */
 .mat-status-ok  { border-left: 3px solid #3DDC97; }
-.mat-status-near { border-left: 3px solid #FFC857; }
+.mat-status-near { border-left: 3px solid #00D2FF; }
 .mat-status-gap  { border-left: 3px solid #FF5C5C; }
 
 /* --- Star Map Node Hover Active Stronger Glow --- */
@@ -3070,7 +3070,7 @@ button {
 
 .tour-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #FF7A2F, #FFC857);
+  background: linear-gradient(90deg, #00D2FF, #00D2FF);
   border-radius: 999px;
   transition: width 0.2s linear;
   box-shadow: 0 0 8px rgba(255,122,47,0.6);
@@ -3548,277 +3548,381 @@ button {
   opacity: 0.9;
 }
 
-/* Deep Space Backdrop Layer & Astronaut floating figure */
-.hero-space-backdrop-layer {
+/* ==========================================================================
+   INORBIT EXACT SPACE HERO ARCHITECTURE (Monochromatic Black/White/Light-Cyan)
+   ========================================================================== */
+
+.inorbit-hero-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 48px 50px;
+  overflow: hidden;
+  background-color: #03060C;
+}
+
+/* Background astronaut & planet visual with deep vignette */
+.inorbit-hero-backdrop {
   position: absolute;
-  inset: -60px;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 82, 255, 0.12) 0%, rgba(0, 240, 255, 0.04) 45%, transparent 70%);
+  inset: 0;
   pointer-events: none;
   z-index: 1;
 }
 
-.hero-astronaut-layer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 480px;
-  height: 480px;
-  pointer-events: none;
-  z-index: 15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 0 45px rgba(0, 240, 255, 0.35)) drop-shadow(0 20px 60px rgba(0, 0, 0, 0.95));
-  animation: astronaut-micro-float 8s ease-in-out infinite;
-}
-
-.hero-astronaut-img {
+.inorbit-hero-bg-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-  mask-image: radial-gradient(circle at 50% 50%, black 60%, rgba(0,0,0,0.8) 75%, transparent 95%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 60%, rgba(0,0,0,0.8) 75%, transparent 95%);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.82;
+  filter: contrast(1.15) brightness(0.92);
 }
 
-.astronaut-rim-highlight {
-  position: absolute;
-  inset: 10px;
-  border-radius: 50%;
-  box-shadow: inset 0 0 40px rgba(0, 240, 255, 0.4), 0 0 35px rgba(0, 82, 255, 0.25);
-  pointer-events: none;
-}
-
-@keyframes astronaut-micro-float {
-  0%, 100% {
-    transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translate(-50%, -50%) translateY(-12px) rotate(1.2deg);
-  }
-  66% {
-    transform: translate(-50%, -50%) translateY(8px) rotate(-1deg);
-  }
-}
-
-.globe-inner-shadow {
+.inorbit-backdrop-vignette {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 65% 65%, rgba(2, 4, 10, 0.95) 40%, rgba(2, 4, 10, 0.2) 75%, transparent 100%);
-  pointer-events: none;
+  background: 
+    radial-gradient(circle at 50% 45%, transparent 25%, rgba(3, 6, 12, 0.75) 70%, #03060C 95%),
+    linear-gradient(to bottom, rgba(3,6,12,0.85) 0%, transparent 20%, transparent 75%, #03060C 100%);
 }
 
-/* Habitat Core Target Marker */
-.habitat-core-target {
+/* InOrbit Top Floating Mission Bar */
+.inorbit-top-bar {
+  position: relative;
+  z-index: 20;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 24px;
+  border-radius: var(--radius-full);
+  background: rgba(7, 12, 24, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.top-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.inorbit-radar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00D2FF;
+  box-shadow: 0 0 10px #00D2FF;
+  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.top-bar-title {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.top-bar-sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.top-bar-sub {
+  color: #8E9BB0;
+}
+
+.top-bar-muted {
+  color: #4B586E;
+}
+
+.top-bar-cyan {
+  color: #00D2FF;
+  font-weight: 700;
+}
+
+.inorbit-tag-pill {
+  background: rgba(0, 210, 255, 0.12);
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  color: #00D2FF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* InOrbit 4-Quadrant Grid Layout */
+.inorbit-grid-layout {
   position: relative;
   z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: calc(100vh - 160px);
+  gap: 30px;
+  align-content: space-between;
+}
+
+.inorbit-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
 }
 
-.core-ping {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid var(--flame);
-  animation: radar-ping 2.2s infinite ease-out;
+/* Top Left: Main Display Title (Exactly matching InOrbit photo) */
+.block-top-left {
+  max-width: 440px;
+  padding-top: 20px;
 }
 
-.core-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--flame);
-  box-shadow: 0 0 16px var(--flame);
+.inorbit-display-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 4.2vw, 4.0rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin-bottom: 20px;
 }
 
-.core-label {
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  color: var(--flame);
+.inorbit-desc-muted {
+  font-size: 0.88rem;
+  color: #8E9BB0;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+/* Top Right: Exploration Section */
+.block-top-right {
+  align-items: flex-end;
+  text-align: right;
+  padding-top: 20px;
+}
+
+.inorbit-subheading {
+  font-family: var(--font-sans);
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+/* Bottom Left: Perspective Block */
+.block-bottom-left {
+  justify-content: flex-end;
+  max-width: 360px;
+  padding-bottom: 20px;
+}
+
+.inorbit-meta-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #00D2FF;
   font-weight: 700;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 2px 8px;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 153, 0, 0.3);
-  white-space: nowrap;
+  margin-bottom: 6px;
 }
 
-/* HUD Telemetry Pins */
-.hud-telemetry-pin {
-  position: absolute;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  transition: transform 0.3s var(--ease-spring);
+.inorbit-small-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
-.hud-telemetry-pin:hover {
-  transform: scale(1.03);
+.inorbit-small-desc {
+  font-size: 0.82rem;
+  color: #8E9BB0;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
 
-.pin-top-left {
-  top: 15px;
-  left: 20px;
-  flex-direction: row-reverse;
+.inorbit-data-row {
+  display: inline-flex;
 }
 
-.pin-top-right {
-  top: 15px;
-  right: 20px;
+.inorbit-cyan-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #00D2FF;
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
 }
 
-.pin-bottom-left {
-  bottom: 25px;
-  left: 20px;
-  flex-direction: row-reverse;
+/* Bottom Right: Planetary HUD Card */
+.block-bottom-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-bottom: 20px;
 }
 
-.pin-bottom-right {
-  bottom: 25px;
-  right: 20px;
-}
-
-.pin-anchor {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pin-beacon {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  animation: radar-ping 2s infinite ease-out;
-}
-
-.beacon-amber { border: 1.5px solid #FF9900; }
-.beacon-cyan  { border: 1.5px solid #00F0FF; }
-.beacon-alert { border: 1.5px solid #FF5C5C; }
-
-.pin-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px currentColor;
-}
-
-.dot-amber { background: #FF9900; color: #FF9900; }
-.dot-cyan  { background: #00F0FF; color: #00F0FF; }
-.dot-alert { background: #FF5C5C; color: #FF5C5C; }
-
-.pin-hairline-svg {
-  width: 140px;
-  height: 70px;
-  overflow: visible;
-  flex-shrink: 0;
-}
-
-.pin-glass-card {
-  padding: 12px 16px;
+.inorbit-planet-hud-card {
+  padding: 16px 20px;
   border-radius: var(--radius-sm);
-  background: rgba(7, 11, 22, 0.78);
+  background: rgba(7, 12, 24, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
-  min-width: 220px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  min-width: 250px;
+  text-align: left;
 }
 
-.pin-card-meta {
-  display: block;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  font-weight: 700;
+.hud-card-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 4px;
 }
 
-.pin-card-val {
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
+.hud-pin-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00D2FF;
+  box-shadow: 0 0 8px #00D2FF;
 }
 
-.pin-card-desc {
-  font-size: 0.68rem;
-  color: var(--text-muted);
+.hud-target-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.hud-coord-spec {
+  font-size: 0.7rem;
+  color: #00D2FF;
+  margin-bottom: 10px;
   letter-spacing: 0.05em;
-  line-height: 1.4;
 }
 
-.border-gap {
-  border-color: rgba(255, 92, 92, 0.45) !important;
-  background: linear-gradient(135deg, rgba(255,92,92,0.1) 0%, rgba(7,11,22,0.85) 60%) !important;
+.hud-divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 10px;
 }
 
-/* Magnetic Glowing CTA Button */
-.hero-cta-container {
-  margin-top: 10px;
+.hud-stat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.7rem;
+}
+
+.hud-stat-grid div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stat-k {
+  color: #4B586E;
+  font-weight: 600;
+}
+
+.stat-v {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* Center Bottom: Iconic InOrbit Circular Disc Button */
+.inorbit-center-action {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+}
+
+.inorbit-explore-disc {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(7, 12, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  transition: all 0.35s var(--ease-spring);
+}
+
+.disc-glow-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 210, 255, 0.45);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+  animation: radar-ping 3s infinite ease-out;
+  pointer-events: none;
+}
+
+.disc-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  z-index: 20;
-}
-
-.magnetic-cta-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 36px;
-  border-radius: var(--radius-full);
-  background: rgba(0, 240, 255, 0.12);
-  border: 1px solid rgba(0, 240, 255, 0.5);
+  gap: 3px;
   color: #FFFFFF;
-  text-decoration: none;
-  font-weight: 700;
+}
+
+.disc-text {
   font-size: 0.88rem;
-  letter-spacing: 0.1em;
-  overflow: hidden;
-  box-shadow: 
-    0 0 30px rgba(0, 240, 255, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.3s var(--ease-spring);
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-.magnetic-cta-btn:hover {
-  background: rgba(0, 240, 255, 0.25);
-  border-color: var(--cyan-neon);
-  box-shadow: 
-    0 0 50px rgba(0, 240, 255, 0.5),
-    0 10px 30px rgba(0, 0, 0, 0.6);
-  transform: translateY(-3px) scale(1.02);
+.disc-arrow {
+  color: #00D2FF;
+  transition: transform 0.25s ease;
 }
 
-.cta-inner-text {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.inorbit-explore-disc:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: #00D2FF;
+  box-shadow: 0 0 35px rgba(0, 210, 255, 0.5), 0 15px 35px rgba(0, 0, 0, 0.8);
 }
 
-.cta-hint-sub {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: var(--text-dim);
+.inorbit-explore-disc:hover .disc-arrow {
+  transform: translateY(4px);
 }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .inorbit-hero-container {
+    padding: 24px 20px 40px;
+  }
+  .inorbit-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .block-top-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .block-bottom-right {
+    align-items: flex-start;
+  }
+  .inorbit-center-action {
+    position: static;
+    transform: none;
+    align-self: center;
+    margin: 20px 0;
+  }
+}
+
 
 /* Flame Laboratory Section */
 .flame-lab-section {

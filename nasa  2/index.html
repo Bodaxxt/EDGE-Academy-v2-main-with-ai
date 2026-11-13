@@ -29,8 +29,8 @@
             <path d="M12 9c-1.5 2-3 3.75-3 6a3 3 0 0 0 6 0c0-2.25-1.5-4-3-6z" fill="#FFFFFF"/>
             <defs>
               <linearGradient id="brandFlameGrad" x1="12" y1="2" x2="12" y2="20" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FF7A2F"/>
-                <stop offset="1" stop-color="#4AA8FF"/>
+                <stop stop-color="#FFFFFF"/>
+                <stop offset="1" stop-color="#00D2FF"/>
               </linearGradient>
             </defs>
           </svg>
@@ -77,153 +77,104 @@
   </header>
 
   <main id="main-content" class="main-layout">
-    <!-- HERO SECTION: High-End Cinematic Void & Lunar Horizon HUD -->
-    <section class="cinematic-hero" id="hero" aria-label="Hero: Untethered Flame & Lunar Horizon Telemetry">
-      <!-- Background Cosmic Atmosphere & Rim Glow -->
-      <div class="space-void-bg" aria-hidden="true">
-        <div class="stars-layer"></div>
-        <div class="horizon-rim-glow"></div>
-        <div class="ambient-nebula-cyan"></div>
-        <div class="ambient-nebula-amber"></div>
+    <!-- HERO SECTION: InOrbit Space Design Layout -->
+    <section class="inorbit-hero-container" id="hero" aria-label="Hero: InOrbit Space Screening Terminal">
+      <!-- Background Astronaut Visual Image -->
+      <div class="inorbit-hero-backdrop">
+        <img src="/assets/inorbit-hero.jpg" alt="InOrbit Astronaut in Deep Space" class="inorbit-hero-bg-img" />
+        <div class="inorbit-backdrop-vignette"></div>
       </div>
 
-      <!-- Top Minimalist Floating Mission Bar -->
-      <div class="mission-status-bar glass-pill mono" role="region" aria-label="Artemis Mission Protocol Status">
-        <div class="mission-pill-item">
-          <span class="status-dot-radar"></span>
-          <span class="pill-label">IGNIS ATLAS</span>
-          <span class="pill-divider">//</span>
-          <span class="pill-val">ARTEMIS MISSION PROTOCOL</span>
+      <!-- Top InOrbit Floating Mission Bar -->
+      <div class="inorbit-top-bar glass-pill mono">
+        <div class="top-bar-item">
+          <span class="inorbit-radar-dot"></span>
+          <span class="top-bar-title">IGNIS ATLAS</span>
+          <span class="top-bar-sep">//</span>
+          <span class="top-bar-sub">ARTEMIS MISSION CONTROL</span>
         </div>
-        <div class="mission-pill-item hide-mobile">
-          <span class="pill-label">MET:</span>
-          <span class="pill-val text-cyan" id="mission-elapsed-time">00:14:49</span>
+        <div class="top-bar-item hide-mobile">
+          <span class="top-bar-muted">MET:</span>
+          <span class="top-bar-cyan">00:14:49</span>
         </div>
-        <div class="mission-pill-item">
-          <span class="pill-tag">LIVE PSI TELEMETRY</span>
+        <div class="top-bar-item">
+          <span class="inorbit-tag-pill">LIVE PSI REPO</span>
         </div>
       </div>
 
-      <!-- Hero Main Visual Stage: Grand Moon/Earth Limb Centerpiece with HUD Pins -->
-      <div class="celestial-stage-container">
-        <!-- Floating Dramatic Title & Monospace Briefing -->
-        <div class="hero-typography-block">
-          <div class="hero-pretitle mono">
-            <span class="hud-bracket">[</span> PHASE 04 // Cis-Lunar Atmospheric Screening <span class="hud-bracket">]</span>
-          </div>
-          <h1 class="hero-cinematic-title">
-            U N T E T H E R E D<br />
-            <span class="text-glow-gradient">F L A M E</span>
+      <!-- InOrbit 4-Quadrant Hero Typography & Telemetry Layout -->
+      <div class="inorbit-grid-layout">
+        <!-- Top Left: Grand Main Heading -->
+        <div class="inorbit-block block-top-left">
+          <h1 class="inorbit-display-title">
+            Explore<br />
+            the wonder<br />
+            of space safety
           </h1>
-          <p class="hero-cinematic-sub mono">
-            80,000 MILES FROM EARTH. FRACTIONAL GRAVITY. ELEVATED OXYGEN.<br class="hide-mobile" />
-            MAPPING WHERE NASA GROUND TRUTH ENDS.
+          <p class="inorbit-desc-muted">
+            Screening NASA's Physical Sciences Informatics (PSI) microgravity combustion records against lunar exploration envelopes.
           </p>
         </div>
 
-        <!-- Grand Celestial Body & EVA Astronaut with 4 Interactive HUD Pins -->
-        <div class="celestial-globe-wrapper" id="hero-parallax-stage">
-          <!-- Deep Space Backdrop Layer -->
-          <div class="hero-space-backdrop-layer" aria-hidden="true"></div>
+        <!-- Top Right: Exploration Mission Objective -->
+        <div class="inorbit-block block-top-right">
+          <h2 class="inorbit-subheading">
+            Explore the<br />
+            Infinite Horizons<br />
+            of Artemis
+          </h2>
+          <p class="inorbit-desc-muted">
+            Step into the next phase of cislunar science. Where natural convection ceases and fire safety standards must be rewritten.
+          </p>
+        </div>
 
-          <!-- Central Celestial Globe with atmospheric horizon rim -->
-          <div class="celestial-globe" role="img" aria-label="Cinematic lunar surface and Earth limb horizon illuminated in deep cosmic void">
-            <div class="globe-rim-light"></div>
-            <div class="globe-surface-texture"></div>
-            <div class="globe-inner-shadow"></div>
-            <!-- Central Habitat Target Pulsing Radar Ring -->
-            <div class="habitat-core-target" aria-hidden="true">
-              <span class="core-ping"></span>
-              <span class="core-dot"></span>
-              <span class="core-label mono">ARTEMIS BASE CAMP // SOUTH POLE</span>
-            </div>
+        <!-- Bottom Left: Perspective & Callout -->
+        <div class="inorbit-block block-bottom-left">
+          <span class="inorbit-meta-label mono">SYSTEM ARCHITECTURE</span>
+          <h3 class="inorbit-small-title">Broaden Your Perspective</h3>
+          <p class="inorbit-small-desc">
+            Deterministic parameter screening cross-referencing O₂ concentration, chamber pressure, and material extinction limits.
+          </p>
+          <div class="inorbit-data-row mono">
+            <span class="inorbit-cyan-badge">HABITAT: 34% O₂ &bull; 10.2 PSI</span>
           </div>
+        </div>
 
-          <!-- Hero Detailed EVA Astronaut (Cinematic Floating Cutout) -->
-          <div class="hero-astronaut-layer" id="hero-astronaut-layer" aria-hidden="true">
-            <img src="/assets/hero-astronaut.jpg" alt="EVA Astronaut floating in lunar microgravity" class="hero-astronaut-img" />
-            <div class="astronaut-rim-highlight"></div>
-          </div>
-
-          <!-- Pin 1 (Top Left): ATM. OXYGEN -->
-          <div class="hud-telemetry-pin pin-top-left" data-pin="1">
-            <div class="pin-anchor">
-              <span class="pin-beacon beacon-amber"></span>
-              <span class="pin-dot dot-amber"></span>
+        <!-- Bottom Right: Planetary Discovery HUD Callouts -->
+        <div class="inorbit-block block-bottom-right">
+          <div class="inorbit-planet-hud-card glass-card">
+            <div class="hud-card-top-row">
+              <span class="hud-pin-dot"></span>
+              <span class="hud-target-name">Lunar Surface Habitat</span>
             </div>
-            <svg class="pin-hairline-svg svg-top-left" viewBox="0 0 160 80" aria-hidden="true">
-              <path d="M160 80 L60 80 L10 15" fill="none" stroke="rgba(255,153,0,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
-              <circle cx="10" cy="15" r="2.5" fill="#FF9900" />
-            </svg>
-            <div class="pin-glass-card glass-card">
-              <span class="pin-card-meta mono">ATM. OXYGEN</span>
-              <div class="pin-card-val mono text-amber">34.0% OXYGEN</div>
-              <p class="pin-card-desc mono">[HIGH FLAMMABILITY ENVELOPE] // 1.6x TERRESTRIAL RATIO</p>
-            </div>
-          </div>
-
-          <!-- Pin 2 (Top Right): CABIN PRESSURE -->
-          <div class="hud-telemetry-pin pin-top-right" data-pin="2">
-            <div class="pin-anchor">
-              <span class="pin-beacon beacon-cyan"></span>
-              <span class="pin-dot dot-cyan"></span>
-            </div>
-            <svg class="pin-hairline-svg svg-top-right" viewBox="0 0 160 80" aria-hidden="true">
-              <path d="M0 80 L100 80 L150 15" fill="none" stroke="rgba(0,240,255,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
-              <circle cx="150" cy="15" r="2.5" fill="#00F0FF" />
-            </svg>
-            <div class="pin-glass-card glass-card">
-              <span class="pin-card-meta mono">CABIN PRESSURE</span>
-              <div class="pin-card-val mono text-cyan">10.2 PSI (HYPOBARIC)</div>
-              <p class="pin-card-desc mono">HYPOBARIC ENVIRONMENT // RAPID EVA DECOMPRESSION SPEC</p>
-            </div>
-          </div>
-
-          <!-- Pin 3 (Bottom Left): SURFACE GRAVITY -->
-          <div class="hud-telemetry-pin pin-bottom-left" data-pin="3">
-            <div class="pin-anchor">
-              <span class="pin-beacon beacon-cyan"></span>
-              <span class="pin-dot dot-cyan"></span>
-            </div>
-            <svg class="pin-hairline-svg svg-bottom-left" viewBox="0 0 160 80" aria-hidden="true">
-              <path d="M160 0 L60 0 L10 65" fill="none" stroke="rgba(0,240,255,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
-              <circle cx="10" cy="65" r="2.5" fill="#00F0FF" />
-            </svg>
-            <div class="pin-glass-card glass-card">
-              <span class="pin-card-meta mono">SURFACE GRAVITY</span>
-              <div class="pin-card-val mono text-cyan">0.16 g (LUNAR PARTIAL)</div>
-              <p class="pin-card-desc mono">LUNAR REGIME // INTERMEDIATE CONVECTION VOID</p>
-            </div>
-          </div>
-
-          <!-- Pin 4 (Bottom Right): NASA PSI ARCHIVE -->
-          <div class="hud-telemetry-pin pin-bottom-right" data-pin="4">
-            <div class="pin-anchor">
-              <span class="pin-beacon beacon-alert"></span>
-              <span class="pin-dot dot-alert"></span>
-            </div>
-            <svg class="pin-hairline-svg svg-bottom-right" viewBox="0 0 160 80" aria-hidden="true">
-              <path d="M0 0 L100 0 L150 65" fill="none" stroke="rgba(255,92,92,0.55)" stroke-width="1.2" stroke-dasharray="3 3"/>
-              <circle cx="150" cy="65" r="2.5" fill="#FF5C5C" />
-            </svg>
-            <div class="pin-glass-card glass-card border-gap">
-              <span class="pin-card-meta mono text-gap">NASA PSI ARCHIVE</span>
-              <div class="pin-card-val mono text-gap">ZERO FLIGHT DATA IN 0.16g</div>
-              <p class="pin-card-desc mono">[CRITICAL GAP] // HIGH-PRIORITY LUCI TARGET</p>
+            <div class="hud-coord-spec mono">SOUTH POLE BASE // 0.16 g</div>
+            <div class="hud-divider-line"></div>
+            <div class="hud-stat-grid mono">
+              <div>
+                <span class="stat-k">ATMOSPHERE</span>
+                <span class="stat-v">34.0% O₂ [HIGH]</span>
+              </div>
+              <div>
+                <span class="stat-k">PRESSURE</span>
+                <span class="stat-v">10.2 PSI (HYP)</span>
+              </div>
+              <div>
+                <span class="stat-k">DATA STATUS</span>
+                <span class="stat-v text-cyan">CRITICAL GAP</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Magnetic Glowing Call To Action Button -->
-        <div class="hero-cta-container">
-          <a href="#views-container" class="magnetic-cta-btn mono" id="btn-hero-explore">
-            <span class="cta-cyan-glow"></span>
-            <span class="cta-inner-text">
-              <span>INITIALIZE ATLAS SCREENER</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-            </span>
+        <!-- Center Bottom: Iconic InOrbit Circular "Explore" Trigger Button -->
+        <div class="inorbit-center-action">
+          <a href="#views-container" class="inorbit-explore-disc" id="btn-hero-explore" aria-label="Explore Atlas Screening Engine">
+            <div class="disc-glow-ring"></div>
+            <div class="disc-content">
+              <span class="disc-text">Explore</span>
+              <svg class="disc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
           </a>
-          <span class="cta-hint-sub mono">MISSION CONTROL TELEMETRY &bull; SCROLL TO DECEND</span>
         </div>
       </div>
     </section>

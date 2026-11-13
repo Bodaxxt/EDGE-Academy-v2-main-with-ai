@@ -107,7 +107,7 @@ export class IgnisAtlas {
         <defs>
           <!-- Lunar Target Hazard Diagonal Stripe Pattern -->
           <pattern id="lunarHazardPattern" width="14" height="14" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="14" stroke="#FFC857" stroke-width="2.5" stroke-opacity="0.25" />
+            <line x1="0" y1="0" x2="0" y2="14" stroke="#00D2FF" stroke-width="2.5" stroke-opacity="0.25" />
           </pattern>
 
           <!-- Range Envelopes Subtle Background Gradients -->
@@ -205,7 +205,7 @@ export class IgnisAtlas {
       <g class="lunar-target-group">
         <rect x="${x1}" y="${yTop}" width="${width}" height="${height}" 
               class="lunar-target-rect" fill="url(#lunarHazardPattern)" rx="6" />
-        <text x="${x1 + 10}" y="${yTop + 22}" class="chart-axis-label" fill="#FFC857" font-weight="700">
+        <text x="${x1 + 10}" y="${yTop + 22}" class="chart-axis-label" fill="#00D2FF" font-weight="700">
           LUNAR HABITAT ZONE
         </text>
         <text x="${x1 + 10}" y="${yTop + 38}" class="chart-axis-label" fill="#94A3B8">
@@ -314,8 +314,8 @@ export class IgnisAtlas {
     return `
       <!-- Earth Reference Marker with Radar Ping -->
       <g class="ref-marker" data-label="Earth Sea Level: 21% O₂, 14.7 psi">
-        <circle cx="${earthX}" cy="${earthY}" r="5" class="ref-marker-point" style="stroke: #FF7A2F;" />
-        <circle cx="${earthX}" cy="${earthY}" r="5" class="ref-marker-ping" style="stroke: #FF7A2F;" />
+        <circle cx="${earthX}" cy="${earthY}" r="5" class="ref-marker-point" style="stroke: #00D2FF;" />
+        <circle cx="${earthX}" cy="${earthY}" r="5" class="ref-marker-ping" style="stroke: #00D2FF;" />
         <text x="${earthX + 12}" y="${earthY + 4}" class="ref-marker-text">Earth (21%, 14.7 psi)</text>
       </g>
 
@@ -328,9 +328,9 @@ export class IgnisAtlas {
 
       <!-- Lunar Habitat Baseline Marker with Radar Ping -->
       <g class="ref-marker" data-label="NASA Lunar Exploration Baseline: 34% O₂, 8.2 psi">
-        <circle cx="${lunarX}" cy="${lunarY}" r="5" class="ref-marker-point" style="stroke: #FFC857;" />
-        <circle cx="${lunarX}" cy="${lunarY}" r="5" class="ref-marker-ping" style="stroke: #FFC857;" />
-        <text x="${lunarX + 12}" y="${lunarY + 4}" class="ref-marker-text" fill="#FFC857">Lunar Baseline (34%, 8.2 psi)</text>
+        <circle cx="${lunarX}" cy="${lunarY}" r="5" class="ref-marker-point" style="stroke: #00D2FF;" />
+        <circle cx="${lunarX}" cy="${lunarY}" r="5" class="ref-marker-ping" style="stroke: #00D2FF;" />
+        <text x="${lunarX + 12}" y="${lunarY + 4}" class="ref-marker-text" fill="#00D2FF">Lunar Baseline (34%, 8.2 psi)</text>
       </g>
     `;
   }
