@@ -183,12 +183,25 @@
           </p>
         </div>
 
-        <!-- 3D Flame Interactive Stage -->
+        <!-- 3D Flame Interactive Stage: Aerospace CIR-MDCA Inspection Chamber Viewport -->
         <div class="flame-stage-wrapper">
-          <div id="flame-canvas-container" class="flame-canvas-container" role="img" aria-label="3D dynamic WebGL visualization showing transition from buoyant 1g Earth flame to spherical 0g diffusion flame">
-            <div id="flame-fallback" class="flame-fallback" hidden>
-              <div class="flame-fallback-graphic" aria-hidden="true"></div>
-              <p>WebGL hardware acceleration required for 60fps dynamic morphing.</p>
+          <div class="chamber-viewport-bezel">
+            <!-- Inspection Chamber HUD Corner Telemetry -->
+            <div class="chamber-telemetry-badge mono">
+              <span class="chamber-rec-dot"></span>
+              <span>CHAMBER: CIR-MDCA // REGIME: BUOYANCY vs DIFFUSION</span>
+            </div>
+
+            <!-- Aerospace Reticle Corner Screws & Alignment Marks -->
+            <div class="chamber-screw chamber-screw-tl" aria-hidden="true"></div>
+            <div class="chamber-screw chamber-screw-tr" aria-hidden="true"></div>
+            <div class="chamber-screw chamber-screw-bl" aria-hidden="true"></div>
+            <div class="chamber-screw chamber-screw-br" aria-hidden="true"></div>
+            <div class="chamber-ticks-reticle" aria-hidden="true"></div>
+            <div class="chamber-glass-glare" aria-hidden="true"></div>
+
+            <!-- Canvas Viewport -->
+            <div id="flame-canvas-container" class="flame-canvas-container" role="img" aria-label="Microgravity Combustion Physics Stage: 1g Buoyant Teardrop to 0g Spherical Diffusion Flame">
             </div>
           </div>
 
