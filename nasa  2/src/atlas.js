@@ -26,9 +26,11 @@ import { gsap } from 'gsap';
 import fallbackExperiments from '../data/experiments.json';
 
 export class IgnisAtlas {
-  constructor() {
+  constructor(options = {}) {
+    this.heroFlame = options.heroFlame || null;
     this.experiments = fallbackExperiments || [];
     this.selectedExperiment = null;
+    this.customMaterials = [];
 
     // ECLSS State Variables
     this.currentO2 = 34.0;
@@ -58,6 +60,7 @@ export class IgnisAtlas {
     this.renderSidebar();
     this.initDrawer();
     this.initECLSSControls();
+    this.initCustomMaterialScreener();
     this.initExportCapability();
     this.initJudgeDemoMode();
     this.initAboutModal();
@@ -558,12 +561,19 @@ export class IgnisAtlas {
     document.getElementById('drawer-notes').textContent = exp.notes || '';
 
     const psiLink = document.getElementById('drawer-psi-link');
-    if (psiLink) psiLink.href = exp.psi_url || 'https://psi.nasa.gov';
+    if (psiLink) {
+      psiLink.href = exp.psi_url || 'https://psi.nasa.gov';
+      psiLink.setAttribute('target', '_blank');
+      psiLink.setAttribute('rel', 'noopener noreferrer');
+    }
 
     const doiLink = document.getElementById('drawer-doi-link');
     if (doiLink) {
-      doiLink.href = exp.doi ? `https://doi.org/${exp.doi}` : '#';
-      doiLink.textContent = exp.doi ? `DOI: ${exp.doi} ↗` : 'DOI Pending';
+      const doiTarget = exp.doi_url || (exp.doi ? `https://doi.org/${exp.doi}` : '#');
+      doiLink.href = doiTarget;
+      doiLink.setAttribute('target', '_blank');
+      doiLink.setAttribute('rel', 'noopener noreferrer');
+      doiLink.innerHTML = `<span>Open DOI Resolver (${exp.doi || 'Pending'})</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
     }
 
     this.drawer.classList.add('open');
@@ -602,6 +612,16 @@ export class IgnisAtlas {
     document.querySelectorAll('.gravity-mode-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.gravity === this.currentGravity);
     });
+
+    // 3D Flame Live State Binding (Fix Decoupling)
+    if (this.heroFlame) {
+      let gVal = 0.0;
+      if (this.currentGravity === '1g') gVal = 1.0;
+      else if (this.currentGravity === 'lunar') gVal = 0.16;
+      else if (this.currentGravity === 'mars') gVal = 0.38;
+      else gVal = 0.0; // 0g ISS
+      this.heroFlame.setGravity(gVal);
+    }
 
     // Sync active state on Mission Preset buttons
     const presets = [
@@ -834,37 +854,100 @@ export class IgnisAtlas {
     URL.revokeObjectURL(url);
   }
 
+  /* ==========================================================================
+     CUSTOM MATERIAL SCREENER ENGINE (Interactive Extensibility)
+     ========================================================================== */
+  initCustomMaterialScreener() {
+    const toggleBtn = document.getElementById('btn-toggle-custom-mat');
+    const formContainer = document.getElementById('custom-material-form-container');
+    const closeBtn = document.getElementById('btn-close-custom-form');
+    const form = document.getElementById('custom-material-form');
+
+    if (toggleBtn && formContainer) {
+      toggleBtn.addEventListener('click', () => {
+        const isHidden = formContainer.style.display === 'none';
+        formContainer.style.display = isHidden ? 'block' : 'none';
+        if (isHidden) {
+          const input = document.getElementById('custom-mat-name');
+          if (input) input.focus();
+        }
+      });
+    }
+
+    if (closeBtn && formContainer) {
+      closeBtn.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+      });
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = document.getElementById('custom-mat-name');
+        const o2Input = document.getElementById('custom-mat-o2');
+        if (!nameInput || !o2Input) return;
+
+        const matName = nameInput.value.trim();
+        const targetO2 = parseFloat(o2Input.value);
+        if (!matName) return;
+
+        const customMat = {
+          id: `CUSTOM-${Date.now().toString().slice(-4)}`,
+          name: matName,
+          subtitle: `User-Screened Material Specification • Target Max: ${targetO2.toFixed(1)}% O₂`,
+          testedIn: ['PSI-25', 'GAP-LUCI-01'],
+          hasMicrogravityRecords: false,
+          targetO2: targetO2,
+          isUserCustom: true,
+          o2Bounds: null,
+          pBounds: null,
+        };
+
+        this.customMaterials.unshift(customMat);
+        this.evaluateMaterialPassport();
+
+        // Feedback: scroll to newly inserted card and pulse it
+        setTimeout(() => {
+          this.pulseHighlightCard(customMat.id, 'mat-pulse-gap');
+        }, 100);
+
+        form.reset();
+        o2Input.value = '34.0';
+      });
+    }
+  }
+
   evaluateMaterialPassport() {
     const container = document.getElementById('material-cards-container');
     const summaryEl = document.getElementById('passport-eval-summary');
     if (!container) return;
 
-    // Define the 4 required Sprint 2 Materials
-    const materials = [
+    // Define the baseline materials + any dynamic custom screened materials
+    const baseMaterials = [
       {
         id: 'MAT-PMMA',
         name: 'PMMA (Acrylic)',
         subtitle: 'Poly(methyl methacrylate) • Structural thermoplastics & optical viewports',
-        testedIn: ['EXP-BASS-01', 'EXP-SOFIE-04'],
+        testedIn: ['PSI-25', 'PSI-68'],
         hasMicrogravityRecords: true,
-        // Cumulative tested bounds: O2 [16, 32], P [8.0, 14.7]
-        o2Bounds: [16.0, 32.0],
-        pBounds: [8.0, 14.7],
+        // Cumulative tested bounds: O2 [15.0, 22.2], P [11.6, 14.7]
+        o2Bounds: [15.0, 22.2],
+        pBounds: [11.6, 14.7],
       },
       {
         id: 'MAT-COTTON',
         name: 'Cotton-Fiberglass Blend',
         subtitle: '75/25 Cotton-Fiberglass fabric • Crew cabin textiles & interior insulation',
-        testedIn: ['EXP-BASS-01'],
+        testedIn: ['PSI-25'],
         hasMicrogravityRecords: true,
-        o2Bounds: [16.0, 29.0],
+        o2Bounds: [15.0, 22.2],
         pBounds: [11.6, 14.7],
       },
       {
         id: 'MAT-SILICONE',
         name: 'Silicone Elastomer',
         subtitle: 'Polysiloxane elastomer • Hatch pressure seals, cable feedthroughs & O-rings',
-        testedIn: ['GAP-LUNAR-LUCI'],
+        testedIn: ['GAP-LUCI-01'],
         hasMicrogravityRecords: false, // 0 standardized microgravity records in PSI
         o2Bounds: null,
         pBounds: null,
@@ -873,12 +956,14 @@ export class IgnisAtlas {
         id: 'MAT-NOMEX',
         name: 'Nomex Aramid Blend',
         subtitle: 'Flame-resistant meta-aramid • Spacewalker thermal garments & avionics wrap',
-        testedIn: ['GAP-LUNAR-LUCI'],
+        testedIn: ['GAP-LUCI-01'],
         hasMicrogravityRecords: false, // 0 standardized microgravity records in PSI
         o2Bounds: null,
         pBounds: null,
       },
     ];
+
+    const materials = [...this.customMaterials, ...baseMaterials];
 
     container.innerHTML = '';
     let coveredCount = 0;
@@ -892,7 +977,14 @@ export class IgnisAtlas {
       let reasonText = '';
       let tagText = '';
 
-      if (!mat.hasMicrogravityRecords) {
+      if (mat.isUserCustom) {
+        status = 'gap';
+        statusBadge = '[✕] DATA GAP';
+        statusClass = 'mat-status-gap';
+        tagText = 'USER CUSTOM SCREENING // HIGH-PRIORITY LUCI BENCHMARK';
+        reasonText = `Zero microgravity flight data in NASA PSI repository for "${mat.name}" under ${mat.targetO2.toFixed(1)}% O₂. Flammability boundary unmeasured in space environments. Flagged as primary candidate for LUCI/FM2 lunar mission payload.`;
+        gapCount++;
+      } else if (!mat.hasMicrogravityRecords) {
         // Strict Sprint 2 Rule: Zero microgravity combustion records in PSI
         status = 'gap';
         statusBadge = '[✕] DATA GAP';
@@ -906,22 +998,22 @@ export class IgnisAtlas {
         const insideP = this.currentPressure >= mat.pBounds[0] && this.currentPressure <= mat.pBounds[1];
 
         if (this.currentGravity === '0g' && insideO2 && insideP) {
-          // 🟢 COVERED [✓]
+          // COVERED [✓]
           status = 'covered';
           statusBadge = '[✓] COVERED';
           statusClass = 'mat-status-ok';
           reasonText = `Material tested in microgravity (${mat.testedIn.join(', ')}). Current conditions (${this.currentO2.toFixed(1)}% O₂, ${this.currentPressure.toFixed(1)} psi) fall within verified bounds.`;
           coveredCount++;
         } else {
-          // 🟡 EXTRAPOLATED / NEAR [~]
+          // EXTRAPOLATED / NEAR [~]
           status = 'near';
           statusBadge = '[~] EXTRAPOLATED';
           statusClass = 'mat-status-near';
 
           if (this.currentGravity === 'lunar') {
-            reasonText = 'Tested in 0g, but 0.16g partial-gravity flammability remains unmeasured in PSI.';
+            reasonText = `Tested in 0g up to ${mat.o2Bounds[1]}% O₂; 0.16g partial-gravity flammability unmeasured in PSI.`;
           } else if (this.currentGravity === 'mars') {
-            reasonText = 'Tested in 0g, but 0.38g Martian partial-gravity flammability remains unmeasured in PSI.';
+            reasonText = `Tested in 0g up to ${mat.o2Bounds[1]}% O₂; 0.38g Martian partial-gravity flammability unmeasured in PSI.`;
           } else if (!insideO2 || !insideP) {
             reasonText = `Material tested in 0g, but current atmospheric conditions exceed verified PSI bounds (${mat.o2Bounds[0]}–${mat.o2Bounds[1]}% O₂, ${mat.pBounds[0]}–${mat.pBounds[1]} psi).`;
           } else {
@@ -1104,12 +1196,18 @@ export class IgnisAtlas {
   executeTourTick(timeSec) {
     if (!this.tourProgressFill) return;
 
-    // Progress bar width
+    // Progress bar width & Circular countdown ring (circumference 2*pi*15 = ~94.2)
     const pct = Math.min(100, (timeSec / 30.0) * 100);
     this.tourProgressFill.style.width = `${pct.toFixed(1)}%`;
 
-    // Step 1: 0 to 6 seconds (ISS Baseline -> PMMA Covered)
-    if (timeSec < 6.0) {
+    const countdownRing = document.getElementById('tour-countdown-ring');
+    if (countdownRing) {
+      const offset = 94.2 - (pct / 100) * 94.2;
+      countdownRing.style.strokeDashoffset = `${offset.toFixed(1)}`;
+    }
+
+    // Step 1: 0 to 8s (ISS Baseline -> PMMA Covered, 0g Blue Sphere Flame)
+    if (timeSec < 8.0) {
       if (this.currentTourStep !== 1) {
         this.currentTourStep = 1;
         this.currentO2 = 21.0;
@@ -1118,17 +1216,17 @@ export class IgnisAtlas {
         this.currentGravity = '0g';
         this.syncControlsAndPassport();
 
-        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 1/3 // 06s';
-        if (this.tourStepTitle) this.tourStepTitle.textContent = 'ISS CABIN ORBITAL BASELINE (0g)';
+        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 1/4 // 08s';
+        if (this.tourStepTitle) this.tourStepTitle.textContent = 'ISS ORBITAL BASELINE (0.00g)';
         if (this.tourDesc) {
-          this.tourDesc.textContent = 'Auto-selecting ISS Cabin baseline (21% O₂, 14.7 psi, 0.00g). PMMA Acrylic evaluates as [✓] COVERED inside verified BASS and SoFIE microgravity envelopes.';
+          this.tourDesc.textContent = 'Auto-selecting ISS Cabin baseline (21% O₂, 14.7 psi, 0.00g). 3D flame morphs to spherical blue diffusion shell. PMMA acrylic evaluates as [✓] COVERED inside verified BASS-II/FLEX boundaries.';
         }
 
         this.pulseHighlightCard('MAT-PMMA', 'mat-pulse-ok');
       }
     }
-    // Step 2: 6 to 14 seconds (Lunar Habitat Artemis -> PMMA Extrapolated)
-    else if (timeSec >= 6.0 && timeSec < 14.0) {
+    // Step 2: 8 to 18s (Artemis Lunar Base -> PMMA Extrapolated, 0.16g Hybrid Flame)
+    else if (timeSec >= 8.0 && timeSec < 18.0) {
       if (this.currentTourStep !== 2) {
         this.currentTourStep = 2;
         this.currentO2 = 34.0;
@@ -1137,38 +1235,38 @@ export class IgnisAtlas {
         this.currentGravity = 'lunar';
         this.syncControlsAndPassport();
 
-        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 2/3 // 08s';
+        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 2/4 // 10s';
         if (this.tourStepTitle) this.tourStepTitle.textContent = 'LUNAR BASE ENVELOPE (0.16g)';
         if (this.tourDesc) {
-          this.tourDesc.textContent = 'Switching to Lunar Exploration Habitat (34% O₂, 8.2 psi, 0.16g). PMMA flips to [~] EXTRAPOLATED with warning: partial-gravity flammability remains unmeasured in PSI.';
+          this.tourDesc.textContent = 'Switching to Lunar Exploration Habitat (34% O₂, 8.2 psi, 0.16g). 3D flame transitions to oblate 0.16g hybrid. PMMA flips to [~] EXTRAPOLATED: "Tested in 0g up to 22.2% O2; 0.16g partial-gravity flammability unmeasured in PSI".';
         }
 
         this.pulseHighlightCard('MAT-PMMA', 'mat-pulse-near');
       }
     }
-    // Step 3: 14 to 22 seconds (Silicone Elastomer Critical Data Gap / LUCI)
-    else if (timeSec >= 14.0 && timeSec < 22.0) {
+    // Step 3: 18 to 28s (Silicone Elastomer Critical Data Gap / LUCI)
+    else if (timeSec >= 18.0 && timeSec < 28.0) {
       if (this.currentTourStep !== 3) {
         this.currentTourStep = 3;
         this.syncControlsAndPassport();
 
-        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 3/3 // 08s';
+        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 3/4 // 10s';
         if (this.tourStepTitle) this.tourStepTitle.textContent = 'CRITICAL MATERIAL VOID (LUCI TARGET)';
         if (this.tourDesc) {
-          this.tourDesc.textContent = 'Silicone Elastomer hatch seals evaluate as [✕] DATA GAP. Zero flight records exist in PSI, proving the critical scientific requirement for the upcoming LUCI lunar flight mission.';
+          this.tourDesc.textContent = 'Silicone Elastomer hatch pressure seals evaluate as [✕] DATA GAP. Zero flight records exist in PSI, establishing the primary flight test requirement for upcoming LUCI/FM2 lunar missions.';
         }
 
         this.pulseHighlightCard('MAT-SILICONE', 'mat-pulse-gap');
       }
     }
-    // Summary: 22 to 30 seconds
-    else if (timeSec >= 22.0) {
+    // Step 4: 28 to 30s (Smooth wrap-up showing Earth Spin-Offs)
+    else if (timeSec >= 28.0) {
       if (this.currentTourStep !== 4) {
         this.currentTourStep = 4;
-        if (this.tourStepBadge) this.tourStepBadge.textContent = 'COMPLETE';
-        if (this.tourStepTitle) this.tourStepTitle.textContent = '30s SCREENING TOUR CONCLUDED';
+        if (this.tourStepBadge) this.tourStepBadge.textContent = 'STEP 4/4 // 02s';
+        if (this.tourStepTitle) this.tourStepTitle.textContent = 'EARTH SPIN-OFFS & COMPLETE';
         if (this.tourDesc) {
-          this.tourDesc.textContent = 'Tour complete. You can now freely manipulate the ECLSS sliders, explore Star-Map midpoint nodes, or export the screening report JSON.';
+          this.tourDesc.textContent = 'Evaluation complete! Terrestrial spin-offs validated: Fine-Mist Extinguishers (from FLEX) and EV Battery Thermal-Runaway detection (from BASS/SAME).';
         }
       }
     }
