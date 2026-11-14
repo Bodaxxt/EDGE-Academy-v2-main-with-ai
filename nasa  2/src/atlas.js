@@ -105,35 +105,51 @@ export class IgnisAtlas {
            aria-label="Star-Map: Microgravity combustion experiments plotted at O2 and Pressure midpoint coordinates with distinct fuel glyphs"
            tabindex="0">
         <defs>
-          <!-- Lunar Target Hazard Diagonal Stripe Pattern -->
-          <pattern id="lunarHazardPattern" width="14" height="14" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="14" stroke="#00D2FF" stroke-width="2.5" stroke-opacity="0.25" />
+          <!-- Cyber-Aerospace Lunar Target Safety Hatching Pattern -->
+          <pattern id="lunarHazardPattern" width="16" height="16" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="16" stroke="#00F0FF" stroke-width="1.8" stroke-opacity="0.22" />
+            <line x1="8" y1="0" x2="8" y2="16" stroke="#F59E0B" stroke-width="1.2" stroke-opacity="0.18" />
           </pattern>
 
           <!-- Range Envelopes Subtle Background Gradients -->
           <linearGradient id="envelopeGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#3DDC97" stop-opacity="0.20"/>
-            <stop offset="100%" stop-color="#4AA8FF" stop-opacity="0.06"/>
+            <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#0088FF" stop-opacity="0.05"/>
           </linearGradient>
 
-          <filter id="glowFilter" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          <!-- High-Intensity Cyber Glow Filter -->
+          <filter id="glowFilter" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <filter id="nodeHaloFilter" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
 
         <!-- Coordinate Grid & Axes -->
         ${this.buildGridAndAxes()}
 
-        <!-- Amber Dashed Bounding Box for Lunar Habitat Zone (O2 >= 30%, P <= 10.2 psi) -->
+        <!-- Tactical Highlighted Perimeter for Lunar Habitat Zone (O2 >= 30%, P <= 10.2 psi) -->
         ${this.buildLunarHabitatZone()}
+
+        <!-- Fiber-Line Telemetry Network Connecting Tested Flight Envelopes -->
+        ${this.buildFiberLineTelemetry()}
 
         <!-- Active Experiment Test Envelopes (Range Rectangles) -->
         <g id="svg-envelopes-group">
           ${this.buildExperimentEnvelopes()}
         </g>
 
-        <!-- Sprint 2: Experiment Midpoint Nodes with Fuel State Glyphs -->
+        <!-- Sprint 2: Luminous Midpoint Nodes with Fuel State Glyphs -->
         <g id="svg-midpoint-nodes-group">
           ${this.buildMidpointNodes()}
         </g>
@@ -150,23 +166,23 @@ export class IgnisAtlas {
   buildGridAndAxes() {
     let lines = '';
 
-    // X Grid (O2 %)
+    // Delicate X Grid (O2 %)
     const o2Ticks = [15, 21, 30, 40, 60, 80, 100];
     o2Ticks.forEach((tick) => {
       const x = this.scaleX(tick);
       lines += `
         <line x1="${x}" y1="${this.padding.top}" x2="${x}" y2="${this.padding.top + this.chartHeight}" class="chart-grid-line" />
-        <text x="${x}" y="${this.padding.top + this.chartHeight + 24}" class="chart-axis-label" text-anchor="middle">${tick}%</text>
+        <text x="${x}" y="${this.padding.top + this.chartHeight + 24}" class="chart-axis-label mono" text-anchor="middle">${tick}%</text>
       `;
     });
 
-    // Y Grid (Pressure psi)
+    // Delicate Y Grid (Pressure psi)
     const pTicks = [2, 4.3, 8.2, 10.2, 12, 14.7];
     pTicks.forEach((tick) => {
       const y = this.scaleY(tick);
       lines += `
         <line x1="${this.padding.left}" y1="${y}" x2="${this.padding.left + this.chartWidth}" y2="${y}" class="chart-grid-line" />
-        <text x="${this.padding.left - 14}" y="${y + 4}" class="chart-axis-label" text-anchor="end">${tick}</text>
+        <text x="${this.padding.left - 14}" y="${y + 4}" class="chart-axis-label mono" text-anchor="end">${tick}</text>
       `;
     });
 
@@ -175,20 +191,60 @@ export class IgnisAtlas {
     const yStart = this.padding.top;
     const yEnd = this.padding.top + this.chartHeight;
 
+    // Glowing Vertical Datum Axes (Earth Atmosphere 21.0% & Lunar Threshold 30.0%)
+    const earthDatumX = this.scaleX(21.0);
+    const lunarDatumX = this.scaleX(30.0);
+
     lines += `
+      <!-- Glowing Vertical Datum Axes -->
+      <line x1="${earthDatumX}" y1="${yStart}" x2="${earthDatumX}" y2="${yEnd}" stroke="#00D2FF" stroke-width="1.2" stroke-dasharray="4 4" stroke-opacity="0.45" />
+      <line x1="${lunarDatumX}" y1="${yStart}" x2="${lunarDatumX}" y2="${yEnd}" stroke="#F59E0B" stroke-width="1.2" stroke-dasharray="4 4" stroke-opacity="0.45" />
+
+      <!-- Main Axes -->
       <line x1="${xStart}" y1="${yEnd}" x2="${xEnd}" y2="${yEnd}" class="chart-axis-line" />
       <line x1="${xStart}" y1="${yStart}" x2="${xStart}" y2="${yEnd}" class="chart-axis-line" />
       
       <!-- Axis Titles -->
-      <text x="${xStart + this.chartWidth / 2}" y="${yEnd + 52}" class="chart-axis-title" text-anchor="middle">
-        Oxygen Concentration O₂ (% by volume) &rarr;
+      <text x="${xStart + this.chartWidth / 2}" y="${yEnd + 52}" class="chart-axis-title mono" text-anchor="middle">
+        OXYGEN CONCENTRATION O₂ (% BY VOLUME) &rarr;
       </text>
-      <text x="${-(yStart + this.chartHeight / 2)}" y="${22}" class="chart-axis-title" text-anchor="middle" transform="rotate(-90)">
-        Total Chamber Pressure (psi) &rarr;
+      <text x="${-(yStart + this.chartHeight / 2)}" y="${20}" class="chart-axis-title mono" text-anchor="middle" transform="rotate(-90)">
+        TOTAL CHAMBER PRESSURE (PSI) &rarr;
       </text>
     `;
 
     return lines;
+  }
+
+  buildFiberLineTelemetry() {
+    // Generate delicate cyber fiber traces connecting experimental midpoints
+    const points = [];
+    this.experiments.forEach((exp) => {
+      if (exp.o2 && exp.pressure_psi) {
+        const midX = this.scaleX((exp.o2[0] + exp.o2[1]) / 2);
+        const midY = this.scaleY((exp.pressure_psi[0] + exp.pressure_psi[1]) / 2);
+        points.push({ x: midX, y: midY });
+      }
+    });
+
+    if (points.length < 2) return '';
+    points.sort((a, b) => a.x - b.x);
+
+    let d = `M ${points[0].x} ${points[0].y}`;
+    for (let i = 1; i < points.length; i++) {
+      const prev = points[i - 1];
+      const curr = points[i];
+      const cx1 = prev.x + (curr.x - prev.x) * 0.5;
+      const cy1 = prev.y;
+      const cx2 = prev.x + (curr.x - prev.x) * 0.5;
+      const cy2 = curr.y;
+      d += ` C ${cx1} ${cy1}, ${cx2} ${cy2}, ${curr.x} ${curr.y}`;
+    }
+
+    return `
+      <!-- Telemetry Fiber-Line Trace connecting Flight Bounds -->
+      <path d="${d}" fill="none" stroke="rgba(0, 240, 255, 0.25)" stroke-width="1.5" stroke-dasharray="3 3" filter="url(#glowFilter)" />
+    `;
   }
 
   buildLunarHabitatZone() {
@@ -201,15 +257,22 @@ export class IgnisAtlas {
     const height = yBottom - yTop;
 
     return `
-      <!-- Amber Dashed Bounding Box for Lunar Habitat Zone (O2 >= 30%, P <= 10.2 psi) -->
+      <!-- Highlighted Tactical Perimeter for Lunar Habitat Zone with Safety Hatching -->
       <g class="lunar-target-group">
         <rect x="${x1}" y="${yTop}" width="${width}" height="${height}" 
-              class="lunar-target-rect" fill="url(#lunarHazardPattern)" rx="6" />
-        <text x="${x1 + 10}" y="${yTop + 22}" class="chart-axis-label" fill="#00D2FF" font-weight="700">
-          LUNAR HABITAT ZONE
+              class="lunar-target-rect" fill="url(#lunarHazardPattern)" rx="8" />
+        
+        <!-- Corner Reticle Brackets -->
+        <path d="M ${x1} ${yTop + 14} L ${x1} ${yTop} L ${x1 + 14} ${yTop}" fill="none" stroke="#00F0FF" stroke-width="2" />
+        <path d="M ${x2 - 14} ${yTop} L ${x2} ${yTop} L ${x2} ${yTop + 14}" fill="none" stroke="#00F0FF" stroke-width="2" />
+        <path d="M ${x1} ${yBottom - 14} L ${x1} ${yBottom} L ${x1 + 14} ${yBottom}" fill="none" stroke="#00F0FF" stroke-width="2" />
+        <path d="M ${x2 - 14} ${yBottom} L ${x2} ${yBottom} L ${x2} ${yBottom - 14}" fill="none" stroke="#00F0FF" stroke-width="2" />
+
+        <text x="${x1 + 14}" y="${yTop + 24}" class="chart-axis-label mono" fill="#00F0FF" font-weight="700" letter-spacing="0.08em">
+          LUNAR HABITAT ZONE [TARGET]
         </text>
-        <text x="${x1 + 10}" y="${yTop + 38}" class="chart-axis-label" fill="#94A3B8">
-          O₂ &ge; 30% &bull; P &le; 10.2 psi
+        <text x="${x1 + 14}" y="${yTop + 40}" class="chart-axis-label mono" fill="#94A3B8">
+          O₂ &ge; 30.0% &bull; P &le; 10.2 PSI
         </text>
       </g>
     `;
@@ -265,17 +328,17 @@ export class IgnisAtlas {
       let glyphMarkup = '';
       let glyphClass = 'glyph-solid';
 
-      // Sprint 2 Contract: Solid = square, Liquid = diamond, Gas = circle
+      // Sprint 2 Contract: Solid = square, Liquid = diamond, Gas = circle with Luminous Cyber Glow
       if (fuelType.includes('solid')) {
         glyphClass = 'glyph-solid';
-        glyphMarkup = `<rect x="${cx - 8}" y="${cy - 8}" width="16" height="16" rx="2" class="midpoint-glyph ${glyphClass}" />`;
+        glyphMarkup = `<rect x="${cx - 8}" y="${cy - 8}" width="16" height="16" rx="3" class="midpoint-glyph ${glyphClass}" filter="url(#glowFilter)" />`;
       } else if (fuelType.includes('liquid')) {
         glyphClass = 'glyph-liquid';
-        glyphMarkup = `<polygon points="${cx},${cy - 10} ${cx + 10},${cy} ${cx},${cy + 10} ${cx - 10},${cy}" class="midpoint-glyph ${glyphClass}" />`;
+        glyphMarkup = `<polygon points="${cx},${cy - 10} ${cx + 10},${cy} ${cx},${cy + 10} ${cx - 10},${cy}" class="midpoint-glyph ${glyphClass}" filter="url(#glowFilter)" />`;
       } else {
         // Gas
         glyphClass = 'glyph-gas';
-        glyphMarkup = `<circle cx="${cx}" cy="${cy}" r="8.5" class="midpoint-glyph ${glyphClass}" />`;
+        glyphMarkup = `<circle cx="${cx}" cy="${cy}" r="8.5" class="midpoint-glyph ${glyphClass}" filter="url(#glowFilter)" />`;
       }
 
       markup += `
@@ -286,8 +349,8 @@ export class IgnisAtlas {
            role="button"
            aria-label="${exp.name} node at midpoint O2: ${midO2.toFixed(1)}%, Pressure: ${midP.toFixed(1)} psi. Fuel state: ${exp.fuel_state}.">
           
-          <!-- Outer Pulsing Glow Aura -->
-          <circle cx="${cx}" cy="${cy}" r="16" class="node-aura-pulse" />
+          <!-- Outer Luminous Pulsing Glow Aura -->
+          <circle cx="${cx}" cy="${cy}" r="18" class="node-aura-pulse" filter="url(#nodeHaloFilter)" />
 
           <!-- Fuel State Glyph -->
           ${glyphMarkup}
@@ -399,6 +462,33 @@ export class IgnisAtlas {
           e.preventDefault();
           this.openDrawer(exp);
         }
+      });
+    });
+
+    // Also wire envelope rectangles for seamless inspection
+    const rects = document.querySelectorAll('.experiment-envelope-rect');
+    rects.forEach((rect) => {
+      const expId = rect.dataset.id;
+      const exp = this.experiments.find((e) => e.id === expId);
+      if (!exp) return;
+
+      rect.addEventListener('mouseenter', () => {
+        this.highlightExperimentOnMap(expId, true);
+        this.highlightSidebarCard(expId, true);
+        if (coordsEl) {
+          coordsEl.textContent = `TARGET: ${exp.id} // ${exp.hardware} // ${exp.fuel_state}`;
+        }
+      });
+
+      rect.addEventListener('mouseleave', () => {
+        this.highlightExperimentOnMap(expId, false);
+        this.highlightSidebarCard(expId, false);
+        if (coordsEl) coordsEl.textContent = 'Hover or click any node to inspect dossier';
+      });
+
+      rect.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.openDrawer(exp);
       });
     });
   }
