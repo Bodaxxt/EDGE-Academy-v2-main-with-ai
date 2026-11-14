@@ -5286,44 +5286,50 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(3, 9, 20, 0.90);
+  background: rgba(3, 9, 20, 0.92);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(0, 240, 255, 0.45);
+  border: 1px solid rgba(0, 240, 255, 0.4);
   color: #A5F3FC;
-  padding: 12px 20px;
+  padding: 8px 18px 8px 10px;
   border-radius: 9999px;
-  box-shadow: 0 0 35px rgba(0, 240, 255, 0.28), 0 10px 30px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.25), 0 10px 30px rgba(0, 0, 0, 0.85);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
 }
 
 .agent-dock-pill:hover {
-  background: rgba(4, 14, 32, 0.96);
+  background: rgba(4, 14, 32, 0.98);
   border-color: #00F0FF;
-  box-shadow: 0 0 45px rgba(0, 240, 255, 0.5), 0 14px 40px rgba(0, 0, 0, 0.9);
-  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 45px rgba(0, 240, 255, 0.45), 0 14px 40px rgba(0, 0, 0, 0.95);
+  transform: translateY(-2px) scale(1.02);
 }
 
-.agent-dock-status-dot {
-  width: 9px;
-  height: 9px;
+.agent-dock-orb-avatar {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 12px #10B981;
-  animation: agent-dot-pulse 2s infinite ease-in-out;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), 0 0 25px rgba(0, 240, 255, 0.4);
 }
 
-@keyframes agent-dot-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.4); opacity: 1; filter: drop-shadow(0 0 8px #10B981); }
+.agent-orb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.agent-dock-icon {
-  font-size: 1rem;
-  color: #00F0FF;
-  filter: drop-shadow(0 0 8px #00F0FF);
+.nav-orb-mini {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 
 .agent-dock-title {
@@ -5341,6 +5347,16 @@ button {
   background: rgba(16, 185, 129, 0.15);
   border: 1px solid rgba(16, 185, 129, 0.4);
   color: #6EE7B7;
+}
+
+.idle-radar-ring {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.5);
+  animation: radar-spin 6s linear infinite;
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
 /* 2. Slide-Over Terminal Container */

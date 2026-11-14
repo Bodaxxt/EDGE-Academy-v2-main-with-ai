@@ -30,10 +30,11 @@ export class IgnisOracle {
     dock.className = 'floating-agent-dock';
     dock.innerHTML = `
       <button id="btn-trigger-floating-agent" class="agent-dock-pill" aria-label="Open Autonomous Flight Safety Agent Terminal">
-        <span class="agent-dock-status-dot"></span>
-        <span class="agent-dock-icon">⚡</span>
-        <span class="agent-dock-title mono">AUTONOMOUS FLIGHT SAFETY AGENT // COGNITIVE DOCK</span>
-        <span class="agent-dock-state-badge mono">AGENT IDLE // KINETIC TOOLS ONLINE</span>
+        <span class="agent-dock-orb-avatar" aria-hidden="true">
+          <img src="/assets/images/agent_avatar_orb.png" alt="" class="agent-orb-img" />
+        </span>
+        <span class="agent-dock-title mono">FLIGHT SAFETY AGENT // COGNITIVE DOCK</span>
+        <span class="agent-dock-state-badge mono">STANDBY</span>
       </button>
     `;
     document.body.appendChild(dock);
@@ -97,7 +98,7 @@ export class IgnisOracle {
             </div>
             <button id="btn-run-full-audit" class="oracle-hero-cta mono">
               <span class="cta-glow-pulse"></span>
-              <span class="cta-rocket">🚀</span>
+              <span class="cta-pulse-radar" aria-hidden="true"></span>
               <span class="cta-label">RUN AUTONOMOUS ECLSS SAFETY AUDIT</span>
             </button>
           </div>
@@ -141,8 +142,8 @@ export class IgnisOracle {
             <div class="trace-pipeline-deck" id="trace-pipeline-deck">
               <!-- Initial Idle State Card -->
               <div class="trace-idle-card mono" id="trace-idle-placeholder">
-                <div class="idle-glyph">⌬</div>
-                <div class="idle-title">AGENT ENGINE ARMED & READY</div>
+                <span class="idle-radar-ring"></span>
+                <div class="idle-title">AGENT ENGINE ARMED &amp; READY</div>
                 <p class="idle-p">Select [ RUN AUTONOMOUS ECLSS SAFETY AUDIT ] or inject an emergency chip above to observe real-time multi-step tool execution across NASA PSI ground truth datasets.</p>
               </div>
             </div>
@@ -267,8 +268,8 @@ export class IgnisOracle {
     if (pipeline) {
       pipeline.innerHTML = `
         <div class="trace-idle-card mono" id="trace-idle-placeholder">
-          <div class="idle-glyph">⌬</div>
-          <div class="idle-title">AGENT ENGINE ARMED & READY</div>
+          <span class="idle-radar-ring"></span>
+          <div class="idle-title">AGENT ENGINE ARMED &amp; READY</div>
           <p class="idle-p">Select [ RUN AUTONOMOUS ECLSS SAFETY AUDIT ] or inject an emergency chip above to observe real-time multi-step tool execution across NASA PSI ground truth datasets.</p>
         </div>
       `;
@@ -358,7 +359,7 @@ export class IgnisOracle {
     }, 1300);
 
     setTimeout(() => {
-      this.resolveStep(3, 'GAP SENTINEL FLAGGED ⚠️', 'warning');
+      this.resolveStep(3, 'GAP SENTINEL FLAGGED', 'warning');
       this.activateStep(4, 'Identified high-risk component: Standard Dimethyl Silicone hatch seals. Action: Recommending immediate substitution with Perfluoroelastomer (FFKM Kalrez 0040) / Fluorosilicone (MIL-R-25988B).');
     }, 2000);
 
@@ -546,11 +547,11 @@ export class IgnisOracle {
         <!-- Export & Action Buttons -->
         <div class="memo-action-deck">
           <button id="btn-export-directive-txt" class="memo-action-btn primary mono">
-            <span class="icon">📄</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
             <span>Export Official Flight Safety Directive (.TXT)</span>
           </button>
           <button id="btn-cross-highlight-nodes" class="memo-action-btn secondary mono">
-            <span class="icon">📍</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
             <span>Cross-Highlight Affected PSI Nodes on Star-Map</span>
           </button>
         </div>
